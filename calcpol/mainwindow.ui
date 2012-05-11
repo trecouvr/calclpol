@@ -63,6 +63,8 @@
     </property>
     <addaction name="actionR_tablir"/>
     <addaction name="actionAnnuler"/>
+    <addaction name="separator"/>
+    <addaction name="actionPreferences"/>
    </widget>
    <addaction name="menuFichier"/>
    <addaction name="menuEdition"/>
@@ -89,6 +91,11 @@
   <action name="actionAnnuler">
    <property name="text">
     <string>Annuler</string>
+   </property>
+  </action>
+  <action name="actionPreferences">
+   <property name="text">
+    <string>Préférences</string>
    </property>
   </action>
  </widget>

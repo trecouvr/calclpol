@@ -13,12 +13,15 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     pilewidget.cpp \
-    clavierwidget.cpp
+    clavierwidget.cpp \
+    optiondialog.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
-    clavierwidget.h
+    clavierwidget.h \
+    optiondialog.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \
-    clavierwidget.ui
+    clavierwidget.ui \
+    optiondialog.ui
