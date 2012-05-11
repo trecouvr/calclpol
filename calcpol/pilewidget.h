@@ -3,6 +3,9 @@
 
 #include <QWidget>
 
+#include <QStringListModel>
+#include <QStringList>
+
 namespace Ui {
     class PileWidget;
 }
@@ -15,7 +18,13 @@ public:
     explicit PileWidget(QWidget *parent = 0);
     ~PileWidget();
 
+private slots:
+        void on_input_returnPressed();
+
 private:
+    void eval();
+    QStringListModel _listModel;
+    QStringList _list;
     Ui::PileWidget *ui;
 };
 
