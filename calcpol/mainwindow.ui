@@ -17,10 +17,18 @@
    <layout class="QHBoxLayout" name="horizontalLayout">
     <item>
      <widget class="QTabWidget" name="tabWidget">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
       <widget class="QWidget" name="tab">
        <attribute name="title">
         <string>Tab 1</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_2">
+        <item row="0" column="0">
+         <widget class="PileWidget" name="widget" native="true"/>
+        </item>
+       </layout>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -30,7 +38,7 @@
      </widget>
     </item>
     <item>
-     <layout class="QGridLayout" name="gridLayout"/>
+     <widget class="ClavierWidget" name="widget_2" native="true"/>
     </item>
    </layout>
   </widget>
@@ -40,7 +48,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>25</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -85,6 +93,20 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>PileWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">pilewidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ClavierWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">clavierwidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

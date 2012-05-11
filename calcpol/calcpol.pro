@@ -11,8 +11,14 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    pilewidget.cpp \
+    clavierwidget.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    pilewidget.h \
+    clavierwidget.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    pilewidget.ui \
+    clavierwidget.ui
