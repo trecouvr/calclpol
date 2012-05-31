@@ -16,14 +16,16 @@ SOURCES += main.cpp\
     clavierwidget.cpp \
     optiondialog.cpp \
     idonnee.cpp \
-    complex.cpp
+    complex.cpp \
+    logger.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
     clavierwidget.h \
     optiondialog.h \
     idonnee.h \
-    complex.h
+    complex.h \
+    logger.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \
