@@ -11,13 +11,20 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
+    mainwindow.cpp \
     pilewidget.cpp \
     clavierwidget.cpp \
     optiondialog.cpp \
     idonnee.cpp \
     complex.cpp \
-    logger.cpp
+    iexpression.cpp \
+    ioperateur.cpp \
+    logger.cpp \
+    operateurs/operateurplus.cpp \
+    operateurs/operateurminus.cpp \
+    calculator.cpp \
+    expressionfactory.cpp \
+    basictype.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
@@ -25,7 +32,17 @@ HEADERS  += mainwindow.h \
     optiondialog.h \
     idonnee.h \
     complex.h \
-    logger.h
+    iexpression.h \
+    ioperateur.h \
+    include_all_donnees.h \
+    logger.h \
+    operateurs/operateurplus.h \
+    operateurs/operateurminus.h \
+    calculator.h \
+    expressionfactory.h \
+    include_all_operateurs.h \
+    include_all_expressions.h \
+    basictype.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \
