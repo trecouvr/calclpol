@@ -19,11 +19,10 @@ SOURCES += main.cpp\
     complex.cpp \
     iexpression.cpp \
     ioperateur.cpp \
-    ioperateurbinaire.cpp \
-    operateurplus.cpp \
-    operateurminus.cpp \
     entier.cpp \
-    logger.cpp
+    logger.cpp \
+    operateurs/operateurplus.cpp \
+    operateurs/operateurminus.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
@@ -33,12 +32,11 @@ HEADERS  += mainwindow.h \
     complex.h \
     iexpression.h \
     ioperateur.h \
-    ioperateurbinaire.h \
-    operateurplus.h \
     include_all_donnees.h \
-    operateurminus.h \
     entier.h \
-    logger.h
+    logger.h \
+    operateurs/operateurplus.h \
+    operateurs/operateurminus.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \
