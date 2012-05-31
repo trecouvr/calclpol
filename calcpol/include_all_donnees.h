@@ -2,6 +2,6 @@
 #define INCLUDE_ALL_DONNEES_H
 
 #include "complex.h"
-#include "entier.h"
+#include "basictype.h"
 
 #endif // INCLUDE_ALL_DONNEES_H

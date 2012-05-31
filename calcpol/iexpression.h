@@ -10,7 +10,6 @@ public:
     IExpression();
     IExpression(int t);
     int t() const;
-    virtual void fromString(const QString&) = 0;
     virtual QString toString() const = 0;
 
 private:

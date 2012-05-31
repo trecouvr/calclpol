@@ -9,6 +9,7 @@ public:
     OperateurMinus();
 protected:
     IDonnee* exec(IDonnee **args);
+    QString toString() const;
 };
 
 #endif // OPERATEURMINUS_H

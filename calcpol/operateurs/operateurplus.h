@@ -9,6 +9,7 @@ public:
     OperateurPlus();
 protected:
     IDonnee* exec(IDonnee **args);
+    QString toString() const;
 };
 
 #endif // OPERATEURPLUS_H
