@@ -16,14 +16,27 @@ SOURCES += main.cpp\
     clavierwidget.cpp \
     optiondialog.cpp \
     idonnee.cpp \
-    complex.cpp
+    complex.cpp \
+    iexpression.cpp \
+    ioperateur.cpp \
+    ioperateurbinaire.cpp \
+    operateurplus.cpp \
+    operateurminus.cpp \
+    entier.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
     clavierwidget.h \
     optiondialog.h \
     idonnee.h \
-    complex.h
+    complex.h \
+    iexpression.h \
+    ioperateur.h \
+    ioperateurbinaire.h \
+    operateurplus.h \
+    include_all_donnees.h \
+    operateurminus.h \
+    entier.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \
