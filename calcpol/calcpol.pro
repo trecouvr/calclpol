@@ -11,7 +11,7 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
+    mainwindow.cpp \
     pilewidget.cpp \
     clavierwidget.cpp \
     optiondialog.cpp \
@@ -22,7 +22,8 @@ SOURCES += main.cpp\
     ioperateurbinaire.cpp \
     operateurplus.cpp \
     operateurminus.cpp \
-    entier.cpp
+    entier.cpp \
+    logger.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
@@ -36,7 +37,8 @@ HEADERS  += mainwindow.h \
     operateurplus.h \
     include_all_donnees.h \
     operateurminus.h \
-    entier.h
+    entier.h \
+    logger.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \
