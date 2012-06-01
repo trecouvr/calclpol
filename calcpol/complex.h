@@ -12,6 +12,9 @@ public:
     Complex* plus(const IDonnee*) const;
     Complex* minus(const IDonnee*) const;
     QString toString() const {return "";}
+    Complex& operator+=(const IDonnee&);
+    Complex& operator-=(const IDonnee&);
+    Complex& operator/=(const IDonnee&);
 
 protected:
     IDonnee * _re;

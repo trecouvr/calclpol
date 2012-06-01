@@ -1,6 +1,6 @@
 #include "operateurplus.h"
 
-OperateurPlus::OperateurPlus() : IOperateur(2,true,true,true,true) {
+OperateurPlus::OperateurPlus() : IOperateur(QRegExp("^\\+$"), 2,true,true,true,true) {
 }
 
 IDonnee* OperateurPlus::exec(IDonnee**args) {

@@ -1,6 +1,6 @@
 #include "complex.h"
 
-Complex::Complex(const IDonnee* re, const IDonnee* im) {
+Complex::Complex(const IDonnee* re, const IDonnee* im) : IDonnee(QRegExp()) {
     if (re == 0) {
         _re = new BasicType<int>();
     }
@@ -16,21 +16,38 @@ Complex::Complex(const IDonnee* re, const IDonnee* im) {
 }
 
 Complex* Complex::copy() const {
-    Complex* c = new Complex(_re,_im);
-    return c;
+    return new Complex(_re,_im);
 }
 
 Complex* Complex::plus(const IDonnee*o) const {
-    Complex* p = dynamic_cast<Complex*>(o->copy());
-    p->_re->plus(_re);
-    p->_im->plus(_im);
-    return p;
+    Complex* r = new Complex(*this);
+    *r += *o;
+    return r;
 }
 
 Complex* Complex::minus(const IDonnee*o) const {
-    Complex* p = dynamic_cast<Complex*>(o->copy());
-    p->_re->minus(_re);
-    p->_im->minus(_im);
-    return p;
+    Complex* r = new Complex(*this);
+    *r -= *o;
+    return r;
+}
+
+Complex& Complex::operator+=(const IDonnee& o) {
+    const Complex& p = dynamic_cast<const Complex&>(o);
+    *_re += *(p._re);
+    *_im += *(p._im);
+    return *this;
+}
+
+Complex& Complex::operator-=(const IDonnee& o) {
+    const Complex& p = dynamic_cast<const Complex&>(o);
+    *_re -= *(p._re);
+    *_im -= *(p._im);
+    return *this;
+}
+
+Complex& Complex::operator/=(const IDonnee& /*o*/) {
+    //const Complex& p = dynamic_cast<const Complex&>(o);
+    // TODO
+    return *this;
 }
 

@@ -24,7 +24,8 @@ SOURCES += main.cpp\
     operateurs/operateurminus.cpp \
     calculator.cpp \
     expressionfactory.cpp \
-    basictype.cpp
+    basictype.cpp \
+    operateurs/operateursinus.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
@@ -42,7 +43,8 @@ HEADERS  += mainwindow.h \
     expressionfactory.h \
     include_all_operateurs.h \
     include_all_expressions.h \
-    basictype.h
+    basictype.h \
+    operateurs/operateursinus.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \

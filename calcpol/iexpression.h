@@ -2,18 +2,19 @@
 #define IEXPRESSION_H
 
 #include <QString>
+#include <QRegExp>
 
 class IExpression
 {
 public:
     enum {CONSTANT, OPERATOR, EXPRESSION};
-    IExpression();
-    IExpression(int t);
+    IExpression(int t, const QRegExp&);
     int t() const;
     virtual QString toString() const = 0;
 
 private:
     int _t;
+    QRegExp _regexp;
 };
 
 #endif // IEXPRESSION_H

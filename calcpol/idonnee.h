@@ -11,11 +11,24 @@ class IDonnee : public IExpression
 {
 public:
     enum {ENTIER, REEL, RATIONNELLE, COMPLEX};
-    IDonnee();
+    IDonnee(const QRegExp& re);
+    explicit IDonnee(const QRegExp& re, int);
+    explicit IDonnee(const QRegExp& re, double);
     virtual ~IDonnee();
     virtual IDonnee* copy() const = 0;
+    virtual IDonnee& operator+=(const IDonnee&) = 0;
+    virtual IDonnee& operator-=(const IDonnee&) = 0;
+    virtual IDonnee& operator/=(const IDonnee&) = 0;
     virtual IDonnee* plus(const IDonnee*) const = 0;
     virtual IDonnee* minus(const IDonnee*) const = 0;
+    //virtual IDonnee* multiply(const IDonnee*) const = 0;
+    //virtual IDonnee* div(const IDonnee*) const = 0;
+    virtual IDonnee* sinus(bool rad=true) const;
+    virtual IDonnee* cosinus(bool rad=true) const;
+    virtual IDonnee* tangente(bool rad=true) const;
+    virtual double toDouble() const;
+    virtual int toInt() const;
+
 };
 
 
