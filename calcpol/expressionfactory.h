@@ -16,9 +16,10 @@ public:
       @param {string} str
       @return {IExpression*}
     */
-    IExpression* parse(const QString&) const;
+    static IExpression* parse(const QString&);
 
 private:
+    IExpression* _parse(const QString&) const;
     ExpressionFactory();
     static ExpressionFactory* _ptr;
 };

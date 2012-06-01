@@ -1,6 +1,6 @@
 #include "iexpression.h"
 
-IExpression::IExpression(int t, const QRegExp& re) : _t(t), _regexp(re) {
+IExpression::IExpression(int t) : _t(t) {
 }
 
 

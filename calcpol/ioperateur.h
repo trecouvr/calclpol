@@ -8,7 +8,7 @@
 class IOperateur : public IExpression
 {
 public:
-    IOperateur(const QRegExp& re, int u, bool allow_entier, bool allow_reel, bool allow_rationnelle, bool allow_complex);
+    IOperateur(int u, bool allow_entier, bool allow_reel, bool allow_rationnelle, bool allow_complex);
     unsigned int unarite() const;
     IDonnee* exec(unsigned int mode, IDonnee**args);
 

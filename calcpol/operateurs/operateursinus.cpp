@@ -1,7 +1,7 @@
 #include "operateursinus.h"
 
 
-OperateurSinus::OperateurSinus() : IOperateur(QRegExp("^sin$"), 1,true,true,true,false) {
+OperateurSinus::OperateurSinus() : IOperateur(1,true,true,true,false) {
 }
 
 IDonnee* OperateurSinus::exec(IDonnee**args) {

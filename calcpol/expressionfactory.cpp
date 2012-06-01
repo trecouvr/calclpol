@@ -14,7 +14,7 @@ ExpressionFactory* ExpressionFactory::get() {
 }
 
 
-IExpression* ExpressionFactory::parse(const QString& s) const {
+IExpression* ExpressionFactory::_parse(const QString& s) const {
     if ("+" == s) {
         return new OperateurPlus();
     }

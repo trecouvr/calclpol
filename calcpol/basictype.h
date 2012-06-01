@@ -32,10 +32,10 @@ protected:
 
 
 template <typename T>
-BasicType<T>::BasicType(int v) : IDonnee(QRegExp()), _v(v) {}
+BasicType<T>::BasicType(int v) : IDonnee(), _v(v) {}
 
 template <typename T>
-BasicType<T>::BasicType(double v) : IDonnee(QRegExp()), _v(v) {}
+BasicType<T>::BasicType(double v) : IDonnee(), _v(v) {}
 
 
 template <typename T>

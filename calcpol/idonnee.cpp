@@ -1,6 +1,6 @@
 #include "idonnee.h"
 
-IDonnee::IDonnee(const QRegExp& re) : IExpression(IExpression::CONSTANT, re) {}
+IDonnee::IDonnee() : IExpression(IExpression::CONSTANT) {}
 
 IDonnee::~IDonnee() {}
 

@@ -11,9 +11,9 @@ class IDonnee : public IExpression
 {
 public:
     enum {ENTIER, REEL, RATIONNELLE, COMPLEX};
-    IDonnee(const QRegExp& re);
-    explicit IDonnee(const QRegExp& re, int);
-    explicit IDonnee(const QRegExp& re, double);
+    IDonnee();
+    explicit IDonnee(int);
+    explicit IDonnee(double);
     virtual ~IDonnee();
     virtual IDonnee* copy() const = 0;
     virtual IDonnee& operator+=(const IDonnee&) = 0;

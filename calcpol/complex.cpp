@@ -1,6 +1,6 @@
 #include "complex.h"
 
-Complex::Complex(const IDonnee* re, const IDonnee* im) : IDonnee(QRegExp()) {
+Complex::Complex(const IDonnee* re, const IDonnee* im) : IDonnee() {
     if (re == 0) {
         _re = new BasicType<int>();
     }
