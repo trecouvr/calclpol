@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Logger* Logger::m_pInstance = NULL;
+Logger* Logger::m_pInstance = 0;
 
 Logger::Logger() : output(&cout), lvl(0) {}
 
@@ -11,7 +11,7 @@ void Logger::set(int level, ostream* out)
 {
     Logger *l = Instance();
     l->lvl = level;
-	l->output = out; /*<<-- marche pas je sais pas pourquoi TODO ! */
+	l->output = out;
 }
 
 /*
