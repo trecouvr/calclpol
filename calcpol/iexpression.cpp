@@ -1,9 +1,11 @@
 #include "iexpression.h"
 
-IExpression::IExpression(int t) : _t(t) {
-}
+IExpression::IExpression(int t) : _t(t) {}
+
 
 
 int IExpression::t() const {
     return _t;
 }
+
+void IExpression::fromString(const QString &) {}

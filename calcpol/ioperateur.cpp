@@ -14,12 +14,11 @@ unsigned int IOperateur::unarite() const {
     return _unarite;
 }
 
-
-IDonnee* IOperateur::exec(unsigned int mode, IDonnee **args) {
+IDonnee* IOperateur::exec(unsigned int mode, const QVector<IDonnee*>& args) const {
     if (mode > 3 or !_allowed_datas[mode]) {
         throw 42;
     }
     return this->exec(args);
 }
 
-
+void IOperateur::fromString(const QString &) {}

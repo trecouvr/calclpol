@@ -7,9 +7,11 @@ class OperateurSinus : public IOperateur
 {
 public:
     OperateurSinus();
-protected:
-    IDonnee* exec(IDonnee **args);
     QString toString() const;
+    QRegExp regexp() const;
+    OperateurSinus* copy() const;
+protected:
+    IDonnee* exec(const QVector<IDonnee*>&) const;
 };
 
 #endif // OPERATEURSINUS_H

@@ -7,9 +7,12 @@ class OperateurPlus : public IOperateur
 {
 public:
     OperateurPlus();
-protected:
-    IDonnee* exec(IDonnee **args);
     QString toString() const;
+    QRegExp regexp() const;
+    OperateurPlus* copy() const;
+
+protected:
+    IDonnee* exec(const QVector<IDonnee*>&) const;
 };
 
 #endif // OPERATEURPLUS_H

@@ -16,9 +16,14 @@ PileWidget::~PileWidget()
 }
 
 void PileWidget::eval() {
-    _list << ui->input->text();
+    QString input = ui->input->text();
+    _calculator.eval(input);
     ui->input->clear();
-    _listModel.setStringList(_list);
+    QStringList list;
+    for (Calculator::const_iterator it=_calculator.begin(); it!=_calculator.end(); ++it) {
+        list << (*it)->toString();
+    }
+    _listModel.setStringList(list);
 }
 
 void PileWidget::on_input_returnPressed()

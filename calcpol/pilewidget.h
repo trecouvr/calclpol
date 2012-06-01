@@ -6,6 +6,8 @@
 #include <QStringListModel>
 #include <QStringList>
 
+#include "calculator.h"
+
 namespace Ui {
     class PileWidget;
 }
@@ -19,13 +21,13 @@ public:
     ~PileWidget();
 
 private slots:
-        void on_input_returnPressed();
+    void on_input_returnPressed();
 
 private:
     void eval();
-    QStringListModel _listModel;
-    QStringList _list;
     Ui::PileWidget *ui;
+    Calculator _calculator;
+    QStringListModel _listModel;
 };
 
 #endif // PILEWIDGET_H

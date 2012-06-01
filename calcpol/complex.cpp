@@ -1,6 +1,6 @@
 #include "complex.h"
 
-Complex::Complex(const IDonnee* re, const IDonnee* im) : IDonnee() {
+/*Complex::Complex(const IDonnee* re, const IDonnee* im) : IDonnee() {
     if (re == 0) {
         _re = new BasicType<int>();
     }
@@ -13,11 +13,8 @@ Complex::Complex(const IDonnee* re, const IDonnee* im) : IDonnee() {
     else {
         _im = im->copy();
     }
-}
-
-Complex* Complex::copy() const {
-    return new Complex(_re,_im);
-}
+}*/
+Complex::Complex() : IDonnee() {}
 
 Complex* Complex::plus(const IDonnee*o) const {
     Complex* r = new Complex(*this);
@@ -51,3 +48,20 @@ Complex& Complex::operator/=(const IDonnee& /*o*/) {
     return *this;
 }
 
+
+void Complex::fromString(const QString &) {
+    // TODO
+}
+
+QString Complex::toString() const {
+    return "Complex TODO";
+}
+
+QRegExp Complex::regexp() const {
+    // TODO
+    return QRegExp(".*");
+}
+
+Complex* Complex::copy() const {
+    return new Complex(*this);
+}

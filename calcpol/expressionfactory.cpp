@@ -1,28 +1,25 @@
 #include "expressionfactory.h"
 
 
-ExpressionFactory* ExpressionFactory::_ptr=0;
-
-ExpressionFactory::ExpressionFactory() {}
-
-ExpressionFactory* ExpressionFactory::get() {
-    if (ExpressionFactory::_ptr == 0) {
-        ExpressionFactory::_ptr = new ExpressionFactory();
-    }
-
-    return ExpressionFactory::_ptr;
+ExpressionFactory::ExpressionFactory() {
+    _expressions.push_back(new OperateurMinus());
+    _expressions.push_back(new OperateurPlus());
+    _expressions.push_back(new OperateurSinus());
+    _expressions.push_back(new Entier());
+    _expressions.push_back(new Reel());
+    _expressions.push_back(new Complex());
 }
 
-
-IExpression* ExpressionFactory::_parse(const QString& s) const {
-    if ("+" == s) {
-        return new OperateurPlus();
+IExpression* ExpressionFactory::parse(const QString& s) {
+    for (QVector<IExpression*>::const_iterator it=_expressions.begin(); it!=_expressions.end(); ++it) {
+        IExpression * exp = *it;
+        if (s.contains(exp->regexp())) {
+            IExpression * r = exp->copy();
+            r->fromString(s);
+            return r;
+        }
     }
-    else if ("-" == s) {
-        return new OperateurMinus();
-    }
-
-    throw 42;
+    return 0;
 }
 
 

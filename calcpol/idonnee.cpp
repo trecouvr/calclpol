@@ -2,7 +2,6 @@
 
 IDonnee::IDonnee() : IExpression(IExpression::CONSTANT) {}
 
-IDonnee::~IDonnee() {}
 
 double IDonnee::toDouble() const {
     throw 42;

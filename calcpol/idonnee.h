@@ -12,10 +12,6 @@ class IDonnee : public IExpression
 public:
     enum {ENTIER, REEL, RATIONNELLE, COMPLEX};
     IDonnee();
-    explicit IDonnee(int);
-    explicit IDonnee(double);
-    virtual ~IDonnee();
-    virtual IDonnee* copy() const = 0;
     virtual IDonnee& operator+=(const IDonnee&) = 0;
     virtual IDonnee& operator-=(const IDonnee&) = 0;
     virtual IDonnee& operator/=(const IDonnee&) = 0;

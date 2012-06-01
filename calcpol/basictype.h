@@ -10,9 +10,9 @@ template <typename T>
 class BasicType : public IDonnee
 {
 public:
-    BasicType(int v);
-    BasicType(double v=0);
-    BasicType<T>* copy() const;
+    BasicType();
+    explicit BasicType(int);
+    explicit BasicType(double);
     BasicType<T>* plus(const IDonnee*) const;
     BasicType<T>* minus(const IDonnee*) const;
     BasicType<T>* sinus(bool rad=true) const;
@@ -25,11 +25,17 @@ public:
     BasicType<T>& operator+=(const IDonnee&);
     BasicType<T>& operator-=(const IDonnee&);
     BasicType<T>& operator/=(const IDonnee&);
+    QRegExp regexp() const;
+    BasicType<T>* copy() const;
 
 protected:
+    void fromString(const QString &);
     T _v;
 };
 
+
+template <typename T>
+BasicType<T>::BasicType() : IDonnee() {}
 
 template <typename T>
 BasicType<T>::BasicType(int v) : IDonnee(), _v(v) {}
@@ -41,11 +47,6 @@ BasicType<T>::BasicType(double v) : IDonnee(), _v(v) {}
 template <typename T>
 BasicType<T>::operator int() const {
     return (int)_v;
-}
-
-template <typename T>
-BasicType<T>* BasicType<T>::copy() const {
-    return new BasicType<T>(_v);
 }
 
 template <typename T>
@@ -80,9 +81,10 @@ BasicType<T>& BasicType<T>::operator/=(const IDonnee& o) {
 
 template <typename T>
 BasicType<T>* BasicType<T>::minus(const IDonnee*o) const {
-    BasicType<T>* p = dynamic_cast<BasicType<T>*>(o->copy());
-    p->_v -= _v;
-    return p;
+    BasicType<T>* r = new BasicType<T>(*this);
+    const BasicType<T>* p = dynamic_cast<const BasicType<T>*>(o);
+    r->_v -= p->_v;
+    return r;
 }
 
 template <typename T>
@@ -133,6 +135,20 @@ BasicType<T>* BasicType<T>::tangente(bool rad) const {
     }
 }
 
+template <typename T>
+QRegExp BasicType<T>::regexp() const {
+    // TODO
+    return QRegExp(".*");
+}
 
+template <typename T>
+void BasicType<T>::fromString(const QString & s) {
+    _v = s.toDouble();
+}
+
+template <typename T>
+BasicType<T>* BasicType<T>::copy() const {
+    return new BasicType<T>(*this);
+}
 
 #endif // BASICTYPE_H

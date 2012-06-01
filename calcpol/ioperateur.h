@@ -10,11 +10,12 @@ class IOperateur : public IExpression
 public:
     IOperateur(int u, bool allow_entier, bool allow_reel, bool allow_rationnelle, bool allow_complex);
     unsigned int unarite() const;
-    IDonnee* exec(unsigned int mode, IDonnee**args);
+    IDonnee* exec(unsigned int mode, const QVector<IDonnee*>&) const;
 
 protected:
-    virtual IDonnee* exec(IDonnee**args) = 0;
+    virtual IDonnee* exec(const QVector<IDonnee*>&) const = 0;
     unsigned int _unarite;
+    void fromString(const QString &);
     QVector<bool> _allowed_datas;
 };
 
