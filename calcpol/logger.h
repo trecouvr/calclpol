@@ -9,10 +9,8 @@ using namespace std;
 class Logger
 {
 public:
-    ostream& output;
-    int lvl;
     static Logger* Instance();
-    void static set(int level, ostream& out);
+	void static set(int level, ostream* out);
     void static log(int priority, string tag, string msg);
     void static v(string tag, string msg); // Verbose
     void static d(string tag, string msg); // Debug
@@ -22,6 +20,8 @@ public:
 private:
     Logger();
     static Logger* m_pInstance;
+	ostream* output;
+	int lvl;
 
 };
 

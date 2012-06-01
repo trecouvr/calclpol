@@ -5,13 +5,13 @@ using namespace std;
 
 Logger* Logger::m_pInstance = NULL;
 
-Logger::Logger() : output(cout), lvl(0) {}
+Logger::Logger() : output(&cout), lvl(0) {}
 
-void Logger::set(int level, ostream& out)
+void Logger::set(int level, ostream* out)
 {
     Logger *l = Instance();
     l->lvl = level;
-    /*l->output = out; <<-- marche pas je sais pas pourquoi TODO ! */
+	l->output = out; /*<<-- marche pas je sais pas pourquoi TODO ! */
 }
 
 /*
@@ -30,7 +30,7 @@ void Logger::log(int priority, string tag, string msg)
 {
     Logger *l = Instance();
     if (priority > l->lvl)
-        l->output << "[" << priority << "] " << tag << " : " << msg << endl;
+		*(l->output) << "[" << priority << "] " << tag << " : " << msg << endl;
 }
 
 void Logger::v(string tag, string msg) // Verbose
