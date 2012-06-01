@@ -3,15 +3,15 @@
 
 using namespace std;
 
-Logger* Logger::m_pInstance = NULL;
+Logger* Logger::m_pInstance = 0;
 
-Logger::Logger() : output(cout), lvl(0) {}
+Logger::Logger() : output(&cout), lvl(0) {}
 
-void Logger::set(int level, ostream& out)
+void Logger::set(int level, ostream* out)
 {
     Logger *l = Instance();
     l->lvl = level;
-    /*l->output = out; <<-- marche pas je sais pas pourquoi TODO ! */
+	l->output = out;
 }
 
 /*
@@ -25,12 +25,33 @@ Logger* Logger::Instance()
    return m_pInstance;
 }
 
+int logColor(int p)
+{
+	if(p < 11) { // VERBOSE
+		return 37; // BLANC
+	} else if(p < 21) { // DEBUG
+		return 32; // VERT
+	} else if(p<31) { // INFORMATION
+		return 34; // BLEU
+	} else if(p<41) { // Warning
+		return 33; // JAUNE
+	} else { // Error
+		return 35; // ROUGE
+	}
+}
+
+#define textcolor(param) cout << "\033[" << param << "m"
 
 void Logger::log(int priority, string tag, string msg)
 {
     Logger *l = Instance();
     if (priority > l->lvl)
-        l->output << "[" << priority << "] " << tag << " : " << msg << endl;
+	{
+		int color = logColor(priority);
+		textcolor( color );
+		*(l->output) << "[" << priority << "] " << tag << " : " << msg << endl;
+		textcolor( 37 );
+	}
 }
 
 void Logger::v(string tag, string msg) // Verbose
