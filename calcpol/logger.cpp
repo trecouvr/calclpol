@@ -3,12 +3,34 @@
 
 using namespace std;
 
-Logger::Logger(int level, ostream& out) : output(out), lvl(level) {}
+Logger* Logger::m_pInstance = NULL;
+
+Logger::Logger() : output(cout), lvl(0) {}
+
+void Logger::set(int level, ostream& out)
+{
+    Logger *l = Instance();
+    l->lvl = level;
+    /*l->output = out; <<-- marche pas je sais pas pourquoi TODO ! */
+}
+
+/*
+ Le logger par défaut est très verbeux, et il ecrit sur STDOUT.
+ Il faut appeler la méthode Logger::set pour modifier les paramétres.
+*/
+Logger* Logger::Instance()
+{
+   if (!m_pInstance)
+       m_pInstance = new Logger;
+   return m_pInstance;
+}
+
 
 void Logger::log(int priority, string tag, string msg)
 {
-    if (priority > lvl)
-        output << "[" << priority << "] " << tag << " : " << msg << endl;
+    Logger *l = Instance();
+    if (priority > l->lvl)
+        l->output << "[" << priority << "] " << tag << " : " << msg << endl;
 }
 
 void Logger::v(string tag, string msg) // Verbose
