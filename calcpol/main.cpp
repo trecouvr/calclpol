@@ -9,11 +9,12 @@
 int main(int argc, char *argv[])
 {
 
-    Logger::d("TEST","test de debug");
-	Logger::set(30, &std::cout);
+	Logger::d("TEST","test de debug");
     Logger::e("TEST ERROR","BOUH");
     Logger::i("TEST INFORMATION", "TETET");
     Logger::d("TEST","test de debug");
+	 Logger::v("TEST","test de verbose");
+	  Logger::w("TEST","test de warning");
 
     Complex c1, c2;
     IDonnee *p1=&c1, *p2=&c2;
