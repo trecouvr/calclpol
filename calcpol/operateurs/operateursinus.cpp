@@ -4,7 +4,7 @@
 OperateurSinus::OperateurSinus() : IOperateur(1,true,true,true,false) {
 }
 
-IDonnee* OperateurSinus::exec(const QVector<IDonnee*>& args) const {
+IConstant* OperateurSinus::exec(const QVector<IConstant*>& args) const {
     return args[0]->sinus();
 }
 

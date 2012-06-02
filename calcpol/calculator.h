@@ -18,8 +18,8 @@ public:
     void drop();
     void dup();
     void clear();
-    IDonnee* sum(int x);
-    IDonnee* mean(int x);
+    IConstant* sum(int x);
+    IConstant* mean(int x);
     void eval(const QString & s);
     void applyOperator(const IOperateur * op);
 

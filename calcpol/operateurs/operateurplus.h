@@ -12,7 +12,7 @@ public:
     OperateurPlus* copy() const;
 
 protected:
-    IDonnee* exec(const QVector<IDonnee*>&) const;
+    IConstant* exec(const QVector<IConstant*>&) const;
 };
 
 #endif // OPERATEURPLUS_H

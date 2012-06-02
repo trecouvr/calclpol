@@ -1,27 +1,27 @@
 #ifndef COMPLEX_H
 #define COMPLEX_H
 
-#include "idonnee.h"
+#include "iconstant.h"
 #include "basictype.h"
 
-class Complex : public IDonnee
+class Complex : public IConstant
 {
 public:
     Complex();
     //Complex(const IDonnee * re=0, const IDonnee * im=0);
     Complex* copy() const;
-    Complex* plus(const IDonnee*) const;
-    Complex* minus(const IDonnee*) const;
+    Complex* plus(const IConstant*) const;
+    Complex* minus(const IConstant*) const;
     QString toString() const;
-    Complex& operator+=(const IDonnee&);
-    Complex& operator-=(const IDonnee&);
-    Complex& operator/=(const IDonnee&);
+    Complex& operator+=(const IConstant&);
+    Complex& operator-=(const IConstant&);
+    Complex& operator/=(const IConstant&);
 
 protected:
     void fromString(const QString &);
     QRegExp regexp() const;
-    IDonnee * _re;
-    IDonnee * _im;
+    IConstant * _re;
+    IConstant * _im;
 };
 
 #endif // COMPLEX_H

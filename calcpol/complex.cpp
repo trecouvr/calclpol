@@ -14,35 +14,35 @@
         _im = im->copy();
     }
 }*/
-Complex::Complex() : IDonnee() {}
+Complex::Complex() : IConstant() {}
 
-Complex* Complex::plus(const IDonnee*o) const {
+Complex* Complex::plus(const IConstant*o) const {
     Complex* r = new Complex(*this);
     *r += *o;
     return r;
 }
 
-Complex* Complex::minus(const IDonnee*o) const {
+Complex* Complex::minus(const IConstant*o) const {
     Complex* r = new Complex(*this);
     *r -= *o;
     return r;
 }
 
-Complex& Complex::operator+=(const IDonnee& o) {
+Complex& Complex::operator+=(const IConstant& o) {
     const Complex& p = dynamic_cast<const Complex&>(o);
     *_re += *(p._re);
     *_im += *(p._im);
     return *this;
 }
 
-Complex& Complex::operator-=(const IDonnee& o) {
+Complex& Complex::operator-=(const IConstant& o) {
     const Complex& p = dynamic_cast<const Complex&>(o);
     *_re -= *(p._re);
     *_im -= *(p._im);
     return *this;
 }
 
-Complex& Complex::operator/=(const IDonnee& /*o*/) {
+Complex& Complex::operator/=(const IConstant& /*o*/) {
     //const Complex& p = dynamic_cast<const Complex&>(o);
     // TODO
     return *this;

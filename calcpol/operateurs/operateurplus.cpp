@@ -3,7 +3,7 @@
 OperateurPlus::OperateurPlus() : IOperateur(2,true,true,true,true) {
 }
 
-IDonnee* OperateurPlus::exec(const QVector<IDonnee*>& args) const {
+IConstant* OperateurPlus::exec(const QVector<IConstant*>& args) const {
     return args[0]->plus(args[1]);
 }
 

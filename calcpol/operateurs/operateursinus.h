@@ -11,7 +11,7 @@ public:
     QRegExp regexp() const;
     OperateurSinus* copy() const;
 protected:
-    IDonnee* exec(const QVector<IDonnee*>&) const;
+    IConstant* exec(const QVector<IConstant*>&) const;
 };
 
 #endif // OPERATEURSINUS_H

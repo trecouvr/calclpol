@@ -3,7 +3,7 @@
 OperateurMinus::OperateurMinus() : IOperateur(2,true,true,true,true) {
 }
 
-IDonnee* OperateurMinus::exec(const QVector<IDonnee*>& args) const {
+IConstant* OperateurMinus::exec(const QVector<IConstant*>& args) const {
     return args[0]->minus(args[1]);
 }
 

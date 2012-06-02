@@ -52,7 +52,7 @@ void Calculator::clear()
 	_pile.clear();
 }
 
-IDonnee* Calculator::sum(int x)
+IConstant* Calculator::sum(int x)
 {
         /*Logger::v("Calculator","sum()");
 	IDonnee* result = _pile[0]->copy();
@@ -65,10 +65,10 @@ IDonnee* Calculator::sum(int x)
     return 0;
 }
 
-IDonnee* Calculator::mean(int x)
+IConstant* Calculator::mean(int x)
 {
 	Logger::v("Calculator","mean()");
-	IDonnee* a = sum(x);
+	IConstant* a = sum(x);
 	//return a / x;
 	// TODO : En attendant la surchagre de l'opérateur /
 	return a;
@@ -100,10 +100,10 @@ void Calculator::eval(const QString &s) {
 }
 
 void Calculator::applyOperator(const IOperateur * op) {
-    QVector<IDonnee*> args;
+    QVector<IConstant*> args;
     for (unsigned int i=0; i<op->unarite(); ++i) {
-        args.push_back(dynamic_cast<IDonnee*>(this->pop()));
+        args.push_back(dynamic_cast<IConstant*>(this->pop()));
     }
-    IDonnee * result = op->exec(0,args);
+    IConstant * result = op->exec(0,args);
     this->push(result);
 }

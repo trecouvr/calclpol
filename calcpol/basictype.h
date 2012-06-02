@@ -2,19 +2,19 @@
 #define BASICTYPE_H
 
 
-#include "idonnee.h"
+#include "iconstant.h"
 #include "qmath.h"
 
 
 template <typename T>
-class BasicType : public IDonnee
+class BasicType : public IConstant
 {
 public:
     BasicType();
     explicit BasicType(int);
     explicit BasicType(double);
-    BasicType<T>* plus(const IDonnee*) const;
-    BasicType<T>* minus(const IDonnee*) const;
+    BasicType<T>* plus(const IConstant*) const;
+    BasicType<T>* minus(const IConstant*) const;
     BasicType<T>* sinus(bool rad=true) const;
     BasicType<T>* cosinus(bool rad=true) const;
     BasicType<T>* tangente(bool rad=true) const;
@@ -22,9 +22,9 @@ public:
     double toDouble() const;
     int toInt() const;
     operator int() const;
-    BasicType<T>& operator+=(const IDonnee&);
-    BasicType<T>& operator-=(const IDonnee&);
-    BasicType<T>& operator/=(const IDonnee&);
+    BasicType<T>& operator+=(const IConstant&);
+    BasicType<T>& operator-=(const IConstant&);
+    BasicType<T>& operator/=(const IConstant&);
     QRegExp regexp() const;
     BasicType<T>* copy() const;
 
@@ -35,13 +35,13 @@ protected:
 
 
 template <typename T>
-BasicType<T>::BasicType() : IDonnee() {}
+BasicType<T>::BasicType() : IConstant() {}
 
 template <typename T>
-BasicType<T>::BasicType(int v) : IDonnee(), _v(v) {}
+BasicType<T>::BasicType(int v) : IConstant(), _v(v) {}
 
 template <typename T>
-BasicType<T>::BasicType(double v) : IDonnee(), _v(v) {}
+BasicType<T>::BasicType(double v) : IConstant(), _v(v) {}
 
 
 template <typename T>
@@ -50,7 +50,7 @@ BasicType<T>::operator int() const {
 }
 
 template <typename T>
-BasicType<T>* BasicType<T>::plus(const IDonnee*o) const {
+BasicType<T>* BasicType<T>::plus(const IConstant*o) const {
     BasicType<T>* r = new BasicType<T>(*this);
     const BasicType<T>* p = dynamic_cast<const BasicType<T>*>(o);
     r->_v += p->_v;
@@ -58,21 +58,21 @@ BasicType<T>* BasicType<T>::plus(const IDonnee*o) const {
 }
 
 template <typename T>
-BasicType<T>& BasicType<T>::operator+=(const IDonnee& o) {
+BasicType<T>& BasicType<T>::operator+=(const IConstant& o) {
     const BasicType<T> p = dynamic_cast<const BasicType<T>&>(o);
     _v += p._v;
     return *this;
 }
 
 template <typename T>
-BasicType<T>& BasicType<T>::operator-=(const IDonnee& o) {
+BasicType<T>& BasicType<T>::operator-=(const IConstant& o) {
     const BasicType<T> p = dynamic_cast<const BasicType<T>&>(o);
     _v -= p._v;
     return *this;
 }
 
 template <typename T>
-BasicType<T>& BasicType<T>::operator/=(const IDonnee& o) {
+BasicType<T>& BasicType<T>::operator/=(const IConstant& o) {
     const BasicType<T> p = dynamic_cast<const BasicType<T>&>(o);
     _v /= p._v;
     return *this;
@@ -80,7 +80,7 @@ BasicType<T>& BasicType<T>::operator/=(const IDonnee& o) {
 
 
 template <typename T>
-BasicType<T>* BasicType<T>::minus(const IDonnee*o) const {
+BasicType<T>* BasicType<T>::minus(const IConstant*o) const {
     BasicType<T>* r = new BasicType<T>(*this);
     const BasicType<T>* p = dynamic_cast<const BasicType<T>*>(o);
     r->_v -= p->_v;
