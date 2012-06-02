@@ -1,20 +1,23 @@
-#include "complex.h"
+#include "include_all_constant.h"
 
-/*Complex::Complex(const IDonnee* re, const IDonnee* im) : IDonnee() {
+Complex::Complex(const IConstant* re, const IConstant* im) : IConstant() {
     if (re == 0) {
-        _re = new BasicType<int>();
+        _re = new Entier(0);
     }
     else {
         _re = re->copy();
     }
     if (im == 0) {
-        _im = new BasicType<int>();
+        _im = new Entier(0);
     }
     else {
         _im = im->copy();
     }
-}*/
-Complex::Complex() : IConstant() {}
+}
+
+Complex::Complex(const Rationnel &r) : IConstant(), _re(r.copy()), _im(new Rationnel()) {}
+
+const IConstant* Complex::re() const { return _re; }
 
 Complex* Complex::plus(const IConstant*o) const {
     Complex* r = new Complex(*this);
@@ -59,7 +62,7 @@ QString Complex::toString() const {
 
 QRegExp Complex::regexp() const {
     // TODO
-    return QRegExp(".*");
+    return QRegExp("");
 }
 
 Complex* Complex::copy() const {

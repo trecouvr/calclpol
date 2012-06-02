@@ -25,13 +25,13 @@ SOURCES += main.cpp\
     expressionfactory.cpp \
     basictype.cpp \
     operateurs/operateursinus.cpp \
-    iconstant.cpp
+    iconstant.cpp \
+    rationnel.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
     clavierwidget.h \
     optiondialog.h \
-    complex.h \
     iexpression.h \
     ioperateur.h \
     logger.h \
@@ -41,7 +41,6 @@ HEADERS  += mainwindow.h \
     expressionfactory.h \
     include_all_operateurs.h \
     include_all_expressions.h \
-    basictype.h \
     operateurs/operateursinus.h \
     iconstant.h \
     include_all_constant.h

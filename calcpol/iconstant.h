@@ -12,6 +12,7 @@ class IConstant : public IExpression
 public:
     enum {ENTIER, REEL, RATIONNELLE, COMPLEX};
     IConstant();
+    virtual IConstant* copy() const = 0;
     virtual IConstant& operator+=(const IConstant&) = 0;
     virtual IConstant& operator-=(const IConstant&) = 0;
     virtual IConstant& operator/=(const IConstant&) = 0;
