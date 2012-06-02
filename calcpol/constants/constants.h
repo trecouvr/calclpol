@@ -8,6 +8,10 @@
 class Complex;
 class Rationnel;
 
+/**
+  Classe manipulant des types simples (int, long, float, double),
+  elle est utilisée pour Entier (BasicType<long>) et Reel (BasicType<double>).
+*/
 template <typename T>
 class BasicType : public IConstant
 {
@@ -37,6 +41,10 @@ protected:
 typedef BasicType<long>  Entier;
 typedef BasicType<double>  Reel;
 
+
+/**
+  Classe représentant un complex, re+i*im.
+*/
 class Complex : public IConstant
 {
 public:
@@ -60,6 +68,10 @@ protected:
     IConstant * _im;
 };
 
+
+/**
+  Classe représentant un rationnel : numerateur/denominateur.
+*/
 class Rationnel : public IConstant {
 public:
     Rationnel(long num=0, long den=1);
@@ -81,6 +93,15 @@ protected:
 
 };
 
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+//                                     TEMPLATE BasicType<T>
+//
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+// le template doit être défini dans le .h
 
 template <typename T>
 Complex::Complex(const BasicType<T>& b) : IConstant(), _re(b.copy()), _im(new BasicType<T>(0)) {}
