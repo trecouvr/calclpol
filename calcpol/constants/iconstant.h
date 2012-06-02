@@ -12,8 +12,11 @@
 class IConstant : public IExpression
 {
 public:
-    enum {ENTIER, REEL, RATIONNELLE, COMPLEX};
-    IConstant();
+    enum T_CONSTANT {ENTIER, REEL, RATIONNELLE, COMPLEX};
+    IConstant(T_CONSTANT t);
+    T_CONSTANT t_constant() const;
+    virtual operator long() const = 0;
+    virtual operator double() const = 0;
     virtual IConstant& operator+=(const IConstant&) = 0;
     virtual IConstant& operator-=(const IConstant&) = 0;
     virtual IConstant& operator/=(const IConstant&) = 0;
@@ -65,6 +68,8 @@ public:
     */
     virtual IConstant* tangente(bool rad=true) const;
 
+protected:
+    T_CONSTANT _t_constant;
 };
 
 

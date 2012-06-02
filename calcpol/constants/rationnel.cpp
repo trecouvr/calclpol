@@ -1,6 +1,26 @@
 #include "constants.h"
 
-Rationnel::Rationnel(long num, long den) : IConstant(), _num(num), _den(den) {}
+Rationnel::Rationnel(long num, long den) : IConstant(IConstant::RATIONNELLE), _num(num), _den(den) {}
+
+Rationnel::Rationnel(const IConstant & i) : IConstant(IConstant::RATIONNELLE) {
+    switch (i.t_constant()) {
+    case IConstant::COMPLEX:
+        if (dynamic_cast<const Complex&>(i).re()->t_constant() == IConstant::RATIONNELLE) {
+            _num = dynamic_cast<const Rationnel*>(dynamic_cast<const Complex&>(i).re())->_num;
+            _den = dynamic_cast<const Rationnel*>(dynamic_cast<const Complex&>(i).re())->_den;
+            break;
+        }
+    case IConstant::ENTIER:
+    case IConstant::REEL:
+        _num = (long) i;
+        _den = 1;
+        break;
+    case IConstant::RATIONNELLE:
+        _num = dynamic_cast<const Rationnel&>(i)._num;
+        _den = dynamic_cast<const Rationnel&>(i)._den;
+        break;
+    }
+}
 
 
 Rationnel::operator long() const { return (long)(_num/_den); }

@@ -7,16 +7,16 @@
 class IExpression
 {
 public:
-    enum {CONSTANT, OPERATOR, EXPRESSION};
-    IExpression(int t=0);
+    enum T_EXP {CONSTANT, OPERATOR, EXPRESSION};
+    explicit IExpression(T_EXP t);
     virtual IExpression* copy() const = 0;
-    int t() const;
+    IExpression::T_EXP t_exp() const;
     virtual QString toString() const = 0;
     virtual void fromString(const QString&);
     virtual QRegExp regexp() const = 0;
 
 protected:
-    int _t;
+    T_EXP _t_exp;
     QRegExp _regexp;
 };
 

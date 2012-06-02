@@ -93,14 +93,20 @@ void Calculator::eval(const QString &s) {
         if (exp==0) {
             throw 42;
         }
+        IOperateur * op;
+        switch (exp->t_exp()) {
         // si on a trouvé un opérateur, on l'applique imédiatement sur la pile
-        if (IExpression::OPERATOR == exp->t()) {
-            IOperateur * op = dynamic_cast<IOperateur*>(exp);
+        case IExpression::OPERATOR:
+            op = dynamic_cast<IOperateur*>(exp);
             this->applyOperator(op);
-        }
+            break;
         // si c'est une constante on l'empile
-        else if (IExpression::CONSTANT == exp->t()) {
+        case IExpression::CONSTANT:
             this->push(exp);
+            break;
+        default:
+            throw 42;
+            break;
         }
     }
 }

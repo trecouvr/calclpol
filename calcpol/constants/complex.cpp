@@ -1,6 +1,6 @@
 #include "constants.h"
 
-Complex::Complex(const IConstant* re, const IConstant* im) : IConstant() {
+Complex::Complex(const IConstant* re, const IConstant* im) : IConstant(IConstant::COMPLEX) {
     if (re == 0) {
         _re = new Entier(0);
     }
@@ -15,7 +15,30 @@ Complex::Complex(const IConstant* re, const IConstant* im) : IConstant() {
     }
 }
 
-Complex::Complex(const Rationnel &r) : IConstant(), _re(r.copy()), _im(new Rationnel()) {}
+Complex::Complex(const Rationnel &r) : IConstant(IConstant::COMPLEX), _re(r.copy()), _im(new Rationnel()) {}
+
+
+Complex::Complex(const IConstant & i) : IConstant(IConstant::COMPLEX) {
+    switch (i.t_constant()) {
+    case IConstant::ENTIER:
+        _re = new Entier(dynamic_cast<const Entier&>(i));
+        _im = new Entier(0);
+        break;
+    case IConstant::REEL:
+        _re = new Reel(dynamic_cast<const Reel&>(i));
+        _im = new Reel(0);
+        break;
+    case IConstant::COMPLEX:
+        _re = dynamic_cast<const Complex&>(i)._re->copy();
+        _im = dynamic_cast<const Complex&>(i)._im->copy();
+        break;
+    case IConstant::RATIONNELLE:
+        _re = new Rationnel(dynamic_cast<const Rationnel&>(i));
+        _im = new Rationnel(0);
+        break;
+    }
+}
+
 
 const IConstant* Complex::re() const { return _re; }
 
@@ -67,4 +90,12 @@ QRegExp Complex::regexp() const {
 
 Complex* Complex::copy() const {
     return new Complex(*this);
+}
+
+Complex::operator double() const {
+    return (double) *_re;
+}
+
+Complex::operator long() const {
+    return (long) *_re;
 }

@@ -1,6 +1,8 @@
 #include "iconstant.h"
 
-IConstant::IConstant() : IExpression(IExpression::CONSTANT) {}
+IConstant::IConstant(IConstant::T_CONSTANT t) : IExpression(IExpression::CONSTANT), _t_constant(t) {}
+
+IConstant::T_CONSTANT IConstant::t_constant() const { return _t_constant; }
 
 IConstant* IConstant::sinus(bool /*rad*/) const {
     throw 42;

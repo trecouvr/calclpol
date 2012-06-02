@@ -2,15 +2,19 @@
 #include "mainwindow.h"
 
 #include <iostream>
-#include "complex.h"
 #include "logger.h"
 #include "expressionfactory.h"
 
 
 int main(int argc, char *argv[])
 {
+
     ExpressionFactory f = ExpressionFactory();
     IExpression * e = f.parse("42");
+
+    Entier * x = new Entier(42);
+    IConstant * p = x;
+    Reel * y = new Reel(*p);
     Logger::d("TEST","test de debug");
     Logger::e("TEST ERROR","BOUH");
     Logger::i("TEST INFORMATION", "TETET");

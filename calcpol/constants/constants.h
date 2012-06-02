@@ -15,19 +15,21 @@ class Rationnel;
 template <typename T>
 class BasicType : public IConstant
 {
+    template <typename U> friend class BasicType;
 public:
     BasicType(double v=0);
+    template <typename U> BasicType(const BasicType<U>&);
     BasicType(const Complex&);
     BasicType(const Rationnel&);
+    BasicType(const IConstant &);
+    operator long() const;
+    operator double() const;
     BasicType<T>* plus(const IConstant*) const;
     BasicType<T>* minus(const IConstant*) const;
     BasicType<T>* sinus(bool rad=true) const;
     BasicType<T>* cosinus(bool rad=true) const;
     BasicType<T>* tangente(bool rad=true) const;
     QString toString() const;
-    double toDouble() const;
-    int toInt() const;
-    operator int() const;
     BasicType<T>& operator+=(const IConstant&);
     BasicType<T>& operator-=(const IConstant&);
     BasicType<T>& operator/=(const IConstant&);
@@ -38,8 +40,6 @@ protected:
     void fromString(const QString &);
     T _v;
 };
-typedef BasicType<long>  Entier;
-typedef BasicType<double>  Reel;
 
 
 /**
@@ -52,6 +52,9 @@ public:
     template <typename T>
     Complex(const BasicType<T>& b);
     Complex(const Rationnel& r);
+    Complex(const IConstant & i);
+    operator long() const;
+    operator double() const;
     Complex* copy() const;
     Complex* plus(const IConstant*) const;
     Complex* minus(const IConstant*) const;
@@ -75,6 +78,7 @@ protected:
 class Rationnel : public IConstant {
 public:
     Rationnel(long num=0, long den=1);
+    Rationnel(const IConstant & i);
     Rationnel* copy() const;
     Rationnel* plus(const IConstant*) const;
     Rationnel* minus(const IConstant*) const;
@@ -93,6 +97,10 @@ protected:
 
 };
 
+typedef BasicType<long>  Entier;
+typedef BasicType<double>  Reel;
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,24 +110,28 @@ protected:
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 // le template doit être défini dans le .h
+//
+// tricks pour déterminer le type de constante du template
+// si le template est entier (utilise des int ou des long), alors 0.1 sera arrondi à 0 et la condition sera fausse
+#define TEMPLATE_CTE_TYPE(T) ((T(0.1)) ? IConstant::REEL : IConstant::ENTIER)
 
 template <typename T>
-Complex::Complex(const BasicType<T>& b) : IConstant(), _re(b.copy()), _im(new BasicType<T>(0)) {}
-
-
-template <typename T>
-BasicType<T>::BasicType(double v) : IConstant(), _v(v) {}
+Complex::Complex(const BasicType<T>& b) : IConstant(IConstant::COMPLEX), _re(b.copy()), _im(new BasicType<T>(0)) {}
 
 template <typename T>
-BasicType<T>::BasicType(const Complex& c) : IConstant(), _v(T(c.re())) {}
+BasicType<T>::BasicType(double v) : IConstant(TEMPLATE_CTE_TYPE(T)), _v(v) {}
+
+template <typename T> template<typename U>
+BasicType<T>::BasicType(const BasicType<U>& u) : IConstant(TEMPLATE_CTE_TYPE(T)), _v(u._v) {}
 
 template <typename T>
-BasicType<T>::BasicType(const Rationnel& r) : IConstant(), _v(T(r)) {}
+BasicType<T>::BasicType(const Complex& c) : IConstant(TEMPLATE_CTE_TYPE(T)), _v(T(c)) {}
 
 template <typename T>
-BasicType<T>::operator int() const {
-    return (int)_v;
-}
+BasicType<T>::BasicType(const Rationnel& r) : IConstant(TEMPLATE_CTE_TYPE(T)), _v(T(r)) {}
+
+template <typename T>
+BasicType<T>::BasicType(const IConstant & i) : IConstant(TEMPLATE_CTE_TYPE(T)), _v(T(i)) {}
 
 template <typename T>
 BasicType<T>* BasicType<T>::plus(const IConstant*o) const {
@@ -157,16 +169,6 @@ BasicType<T>* BasicType<T>::minus(const IConstant*o) const {
     const BasicType<T>* p = dynamic_cast<const BasicType<T>*>(o);
     r->_v -= p->_v;
     return r;
-}
-
-template <typename T>
-double BasicType<T>::toDouble() const {
-    return (double) _v;
-}
-
-template <typename T>
-int BasicType<T>::toInt() const {
-    return (double) _v;
 }
 
 template <typename T>
@@ -221,6 +223,16 @@ void BasicType<T>::fromString(const QString & s) {
 template <typename T>
 BasicType<T>* BasicType<T>::copy() const {
     return new BasicType<T>(*this);
+}
+
+template <typename T>
+BasicType<T>::operator long() const {
+    return (long) _v;
+}
+
+template <typename T>
+BasicType<T>::operator double() const {
+    return (double) _v;
 }
 
 #endif // CONSTANTS_H
