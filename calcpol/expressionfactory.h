@@ -5,7 +5,9 @@
 #include <QString>
 #include "include_all_expressions.h"
 
-
+/**
+  Classe servant à construire des IExpression* à partir de chaines de caracteres
+*/
 class ExpressionFactory
 {
 public:

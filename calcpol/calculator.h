@@ -6,6 +6,9 @@
 
 #include "expressionfactory.h"
 
+/**
+  Classe qui va manipuler des IExpression* pour faire des opérations en notation polonaise inversée.
+*/
 class Calculator
 {
 public:
