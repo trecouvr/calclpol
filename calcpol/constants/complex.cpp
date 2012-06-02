@@ -1,4 +1,4 @@
-#include "include_all_constant.h"
+#include "constants.h"
 
 Complex::Complex(const IConstant* re, const IConstant* im) : IConstant() {
     if (re == 0) {

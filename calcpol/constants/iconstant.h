@@ -1,11 +1,11 @@
-#ifndef IDONNEE_H
-#define IDONNEE_H
+#ifndef ICONSTANT_H
+#define ICONSTANT_H
 
 
 #include "iexpression.h"
 
 /**
-  Meta classe des données
+  Meta classe des constantes
 */
 class IConstant : public IExpression
 {
@@ -29,4 +29,4 @@ public:
 };
 
 
-#endif // IDONNEE_H
+#endif // ICONSTANT_H

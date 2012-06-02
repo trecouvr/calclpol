@@ -1,4 +1,4 @@
-#include "include_all_constant.h"
+#include "constants.h"
 
 Rationnel::Rationnel(long num, long den) : IConstant(), _num(num), _den(den) {}
 

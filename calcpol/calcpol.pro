@@ -15,35 +15,34 @@ SOURCES += main.cpp\
     pilewidget.cpp \
     clavierwidget.cpp \
     optiondialog.cpp \
-    complex.cpp \
     iexpression.cpp \
-    ioperateur.cpp \
     logger.cpp \
-    operateurs/operateurplus.cpp \
-    operateurs/operateurminus.cpp \
     calculator.cpp \
     expressionfactory.cpp \
-    basictype.cpp \
     operateurs/operateursinus.cpp \
-    iconstant.cpp \
-    rationnel.cpp
+    operateurs/operateurplus.cpp \
+    operateurs/operateurminus.cpp \
+    operateurs/ioperateur.cpp \
+    constants/rationnel.cpp \
+    constants/iconstant.cpp \
+    constants/complex.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
     clavierwidget.h \
     optiondialog.h \
     iexpression.h \
-    ioperateur.h \
     logger.h \
-    operateurs/operateurplus.h \
-    operateurs/operateurminus.h \
     calculator.h \
     expressionfactory.h \
-    include_all_operateurs.h \
     include_all_expressions.h \
     operateurs/operateursinus.h \
-    iconstant.h \
-    include_all_constant.h
+    operateurs/operateurplus.h \
+    operateurs/operateurminus.h \
+    operateurs/operateurs.h \
+    operateurs/ioperateur.h \
+    constants/iconstant.h \
+    constants/constants.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \

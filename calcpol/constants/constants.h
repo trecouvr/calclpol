@@ -1,5 +1,5 @@
-#ifndef INCLUDE_ALL_DONNEES_H
-#define INCLUDE_ALL_DONNEES_H
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
 #include "iconstant.h"
 
@@ -93,7 +93,7 @@ template <typename T>
 BasicType<T>::BasicType(const Complex& c) : IConstant(), _v(T(c.re())) {}
 
 template <typename T>
-BasicType<T>::BasicType(const Rationnel& r) : IConstant(), _v(r.num()) {}
+BasicType<T>::BasicType(const Rationnel& r) : IConstant(), _v(T(r)) {}
 
 template <typename T>
 BasicType<T>::operator int() const {
@@ -202,4 +202,4 @@ BasicType<T>* BasicType<T>::copy() const {
     return new BasicType<T>(*this);
 }
 
-#endif // INCLUDE_ALL_DONNEES_H
+#endif // CONSTANTS_H
