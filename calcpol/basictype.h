@@ -99,7 +99,7 @@ int BasicType<T>::toInt() const {
 
 template <typename T>
 QString BasicType<T>::toString() const {
-    return "BasicType TODO";
+    return QString::number(_v);
 }
 
 template <typename T>
