@@ -20,7 +20,15 @@ public:
     void clear();
     IConstant* sum(int x);
     IConstant* mean(int x);
+    /**
+      Evaluer une expression et faire les opérations necessaires sur la pile.
+      @param {const QString&} expression
+    */
     void eval(const QString & s);
+    /**
+      Appliquer une opérateur sur la pile
+      @param {const IOperateur*} op
+    */
     void applyOperator(const IOperateur * op);
 
 protected:

@@ -83,16 +83,22 @@ Calculator::const_iterator Calculator::end() const {
 }
 
 void Calculator::eval(const QString &s) {
+    // split de l'input
     QStringList list = s.split(' ', QString::SkipEmptyParts);
+    // itération sur les différentes expressions
     for (QStringList::iterator it=list.begin(); it != list.end(); ++it) {
+        // génération de la bonne classe fille IExpression grâce à la factory
         IExpression * exp = _factory.parse(*it);
+        // si la factory n'a pas réussi à parser alors on lance une exception
         if (exp==0) {
             throw 42;
         }
+        // si on a trouvé un opérateur, on l'applique imédiatement sur la pile
         if (IExpression::OPERATOR == exp->t()) {
             IOperateur * op = dynamic_cast<IOperateur*>(exp);
             this->applyOperator(op);
         }
+        // si c'est une constante on l'empile
         else if (IExpression::CONSTANT == exp->t()) {
             this->push(exp);
         }
@@ -101,9 +107,12 @@ void Calculator::eval(const QString &s) {
 
 void Calculator::applyOperator(const IOperateur * op) {
     QVector<IConstant*> args;
+    // récupération des arguments sur la pile
     for (unsigned int i=0; i<op->unarite(); ++i) {
         args.push_back(dynamic_cast<IConstant*>(this->pop()));
     }
+    // application de l'opérateur
     IConstant * result = op->exec(0,args);
+    // empilage du résultat
     this->push(result);
 }
