@@ -3,6 +3,7 @@
 
 
 #include "iexpression.h"
+#include "logger.h"
 
 /**
   Meta classe des constantes.

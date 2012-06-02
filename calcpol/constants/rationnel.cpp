@@ -62,7 +62,7 @@ void Rationnel::fromString(const QString &) {
 }
 
 QString Rationnel::toString() const {
-    return "Rationnel TODO";
+    return QString::number(_num)+"/"+QString::number(_den);
 }
 
 QRegExp Rationnel::regexp() const {

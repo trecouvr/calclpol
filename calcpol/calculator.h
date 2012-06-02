@@ -30,6 +30,16 @@ public:
       @param {const IOperateur*} op
     */
     void applyOperator(const IOperateur * op);
+    /**
+      Caster une expression
+      Si l'expression n'est pas une constante, rien ne se passe.
+      Sinon, une nouvelle du bon type est créer et l'ancienne expression est detruite
+    */
+    static IExpression** cast_exp(IConstant::T_CONSTANT t, IExpression ** exp);
+    /**
+      Caster toute la pile
+    */
+    void cast_pile(IConstant::T_CONSTANT t);
 
 protected:
     IExpression* pop();

@@ -80,7 +80,11 @@ void Complex::fromString(const QString &) {
 }
 
 QString Complex::toString() const {
-    return "Complex TODO";
+    if (_re and _im)
+        return _re->toString()+"i"+_im->toString();
+    else
+        Logger::e("Complex", "toString, _im or _re null");
+        return 0;
 }
 
 QRegExp Complex::regexp() const {

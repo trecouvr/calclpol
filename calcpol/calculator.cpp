@@ -122,3 +122,34 @@ void Calculator::applyOperator(const IOperateur * op) {
     // empilage du résultat
     this->push(result);
 }
+
+IExpression** Calculator::cast_exp(IConstant::T_CONSTANT t, IExpression ** exp) {
+    if ((*exp)->t_exp() == IExpression::CONSTANT) {
+        IConstant * cte = 0;
+        IExpression * n = 0;
+        cte = dynamic_cast<IConstant*>(*exp);
+        switch (t) {
+        case IConstant::REEL:
+            n = new Reel(*cte);
+            break;
+        case IConstant::ENTIER:
+            n = new Entier(*cte);
+            break;
+        case IConstant::RATIONNELLE:
+            n = new Rationnel(*cte);
+            break;
+        case IConstant::COMPLEX:
+            n = new Complex(*cte);
+            break;
+        }
+        delete *exp;
+        *exp = n;
+    }
+    return exp;
+}
+
+void Calculator::cast_pile(IConstant::T_CONSTANT t) {
+    for (unsigned int i=0; i<_pile.size(); ++i) {
+        Calculator::cast_exp(t, &_pile[i]);
+    }
+}
