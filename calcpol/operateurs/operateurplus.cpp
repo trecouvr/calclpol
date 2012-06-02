@@ -13,7 +13,7 @@ QString OperateurPlus::toString() const {
 }
 
 QRegExp OperateurPlus::regexp() const {
-    return QRegExp("^\\-$");
+    return QRegExp("^\\+$");
 }
 
 OperateurPlus* OperateurPlus::copy() const {

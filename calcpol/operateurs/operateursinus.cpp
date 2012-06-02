@@ -13,7 +13,7 @@ QString OperateurSinus::toString() const {
 }
 
 QRegExp OperateurSinus::regexp() const {
-    return QRegExp("^\\-$");
+    return QRegExp("^sin$", Qt::CaseInsensitive);
 }
 
 OperateurSinus* OperateurSinus::copy() const {
