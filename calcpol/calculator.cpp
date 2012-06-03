@@ -109,42 +109,56 @@ Calculator::const_iterator Calculator::end() const {
     return _pile.end();
 }
 
+bool Calculator::evalCmd(const QString &s) {
+    const QRegExp
+            re_mean("mean(-?\\d+)"),
+            re_sum("sum(-?\\d+)");
+    // moyenne
+    if (re_mean.exactMatch(s)) {
+        QStringList l = re_mean.capturedTexts();
+        this->mean(l[1].toInt(),true);
+        return true;
+    }
+    // somme
+    else if (re_sum.exactMatch(s)) {
+        QStringList l = re_sum.capturedTexts();
+        this->sum(l[1].toInt(),true);
+        return true;
+    }
+
+    return false;
+}
+
 void Calculator::eval(const QString &s) {
-    const QRegExp re_mean("mean(\\d)"), re_sum("sum(\\d)");
     // split de l'input
     QStringList list = s.split(' ', QString::SkipEmptyParts);
     // itération sur les différentes expressions
     for (QStringList::iterator it=list.begin(); it != list.end(); ++it) {
-        if (re_mean.indexIn(*it) != -1) {
-            QStringList l = re_mean.capturedTexts();
-            this->mean(l[1].toInt(),true);
-            continue;
-        }
-        else if (re_sum.indexIn(*it) != -1) {
-            QStringList l = re_sum.capturedTexts();
-            this->sum(l[1].toInt(),true);
-            continue;
-        }
         // génération de la bonne classe fille IExpression grâce à la factory
         IExpression * exp = _factory.parse(*it);
-        // si la factory n'a pas réussi à parser alors on lance une exception
+        // si la factory n'a pas réussi à parser alors c'est peut être une commande
         if (exp==0) {
-            throw 42;
+            if (!this->evalCmd(s)) {
+                // bah c'est rien de connu !
+                Logger::w("Calculator", "eval, l'input n'a pas pu être parsé, input="+s);
+            }
         }
-        IOperateur * op;
-        switch (exp->t_exp()) {
-        // si on a trouvé un opérateur, on l'applique imédiatement sur la pile
-        case IExpression::OPERATOR:
-            op = dynamic_cast<IOperateur*>(exp);
-            this->applyOperator(op);
-            break;
-        // si c'est une constante on l'empile
-        case IExpression::CONSTANT:
-            this->push(exp);
-            break;
-        default:
-            throw 42;
-            break;
+        else {
+            IOperateur * op;
+            switch (exp->t_exp()) {
+            // si on a trouvé un opérateur, on l'applique imédiatement sur la pile
+            case IExpression::OPERATOR:
+                op = dynamic_cast<IOperateur*>(exp);
+                this->applyOperator(op);
+                break;
+            // si c'est une constante on l'empile
+            case IExpression::CONSTANT:
+                this->push(exp);
+                break;
+            default:
+                throw 42;
+                break;
+            }
         }
     }
 }

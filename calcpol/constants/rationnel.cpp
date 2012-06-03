@@ -71,7 +71,7 @@ QString Rationnel::toString() const {
 }
 
 QRegExp Rationnel::regexp() const {
-    return QRegExp("(\\d+)(/\\d+)?");
+    return QRegExp("(-?\\d+)(/-?\\d+)?");
 }
 
 Rationnel* Rationnel::copy() const {

@@ -37,6 +37,12 @@ public:
     */
     void eval(const QString & s);
     /**
+      Evaluer une commande et faire les opérations necessaires sur la pile.
+      @param {const QString&} expression
+      @return {bool} si une commande a été trouvée
+    */
+    bool evalCmd(const QString & s);
+    /**
       Appliquer une opérateur sur la pile
       @param {const IOperateur*} op
     */
