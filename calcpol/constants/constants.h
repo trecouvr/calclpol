@@ -53,6 +53,7 @@ public:
     Complex(const BasicType<T>& b);
     Complex(const Rationnel& r);
     Complex(const IConstant & i);
+    ~Complex();
     operator long() const;
     operator double() const;
     Complex* copy() const;

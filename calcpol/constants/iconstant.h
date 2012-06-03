@@ -15,6 +15,7 @@ class IConstant : public IExpression
 public:
     enum T_CONSTANT {ENTIER, REEL, RATIONNELLE, COMPLEX};
     IConstant(T_CONSTANT t);
+    virtual ~IConstant();
     T_CONSTANT t_constant() const;
     virtual operator long() const = 0;
     virtual operator double() const = 0;

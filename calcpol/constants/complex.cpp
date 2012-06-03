@@ -39,6 +39,10 @@ Complex::Complex(const IConstant & i) : IConstant(IConstant::COMPLEX) {
     }
 }
 
+Complex::~Complex() {
+    delete _re;
+    delete _im;
+}
 
 const IConstant* Complex::re() const { return _re; }
 const IConstant* Complex::im() const { return _im; }
