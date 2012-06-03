@@ -22,9 +22,10 @@ void Calculator::push(IExpression * exp)
     _pile.push_front(exp);
 }
 
-void Calculator::swap(int x, int y)
-{
+void Calculator::swap(int x, int y) {
     Logger::v("Calculator","swap()");
+    x = min((int)_pile.size()-1, max(0, x));
+    y = min((int)_pile.size()-1, max(0, y));
     IExpression* tmp;
     tmp = _pile[x];
     _pile[x] = _pile[y];
@@ -112,7 +113,9 @@ Calculator::const_iterator Calculator::end() const {
 bool Calculator::evalCmd(const QString &s) {
     const QRegExp
             re_mean("mean(-?\\d+)"),
-            re_sum("sum(-?\\d+)");
+            re_sum("sum(-?\\d+)"),
+            re_dup("dup"),
+            re_swap("swap(\\d)_(\\d)");
     // moyenne
     if (re_mean.exactMatch(s)) {
         QStringList l = re_mean.capturedTexts();
@@ -123,6 +126,17 @@ bool Calculator::evalCmd(const QString &s) {
     else if (re_sum.exactMatch(s)) {
         QStringList l = re_sum.capturedTexts();
         this->sum(l[1].toInt(),true);
+        return true;
+    }
+    // duplication
+    else if (re_dup.exactMatch(s)) {
+        this->dup();
+        return true;
+    }
+    // swap
+    else if (re_swap.exactMatch(s)) {
+        QStringList l = re_swap.capturedTexts();
+        this->swap(l[1].toInt(), l[2].toInt());
         return true;
     }
 
