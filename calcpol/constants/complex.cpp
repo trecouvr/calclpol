@@ -87,6 +87,12 @@ Complex& Complex::operator/=(const IConstant& /*o*/) {
     return *this;
 }
 
+Complex& Complex::operator/=(int x) {
+    *_re /= x;
+    *_im /= x;
+    return *this;
+}
+
 
 void Complex::fromString(const QString &) {
     // TODO

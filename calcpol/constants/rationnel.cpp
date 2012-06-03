@@ -56,6 +56,11 @@ Rationnel& Rationnel::operator/=(const IConstant& /*o*/) {
     return *this;
 }
 
+Rationnel& Rationnel::operator/=(int x) {
+    _den *= x;
+    return *this;
+}
+
 
 void Rationnel::fromString(const QString &) {
     // TODO

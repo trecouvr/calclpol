@@ -22,6 +22,7 @@ public:
     virtual IConstant& operator+=(const IConstant&) = 0;
     virtual IConstant& operator-=(const IConstant&) = 0;
     virtual IConstant& operator/=(const IConstant&) = 0;
+    virtual IConstant& operator/=(int) = 0;
     /**
       Créer une copie du même type
       @return {IConstant*} copy

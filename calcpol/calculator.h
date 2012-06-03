@@ -19,11 +19,18 @@ public:
     const_iterator begin() const;
     const_iterator end() const;
     void swap(int x, int y);
-    void drop();
+    void drop(int x);
     void dup();
     void clear();
-    IConstant* sum(int x);
-    IConstant* mean(int x);
+    IConstant* sum(int x, bool apply=true);
+    IConstant* mean(int x, bool apply);
+    /**
+      Retourne les X première valeurs de la pile casté en IConstant* du mode actuel,
+      ou lance une exception.
+      @param {int} x -1 pout toute la pile
+      @param {bool} make_pop supprime les élément de la pile si tout le cast s'est bien passé
+    */
+    QVector<IConstant*> getCtes(int x=-1, bool make_pop=false);
     /**
       Evaluer une expression et faire les opérations necessaires sur la pile.
       @param {const QString&} expression
@@ -42,6 +49,12 @@ public:
     */
     IExpression** castExp(IExpression **exp) const;
     /**
+      Caster une expression dans le mode courant du calculateur.
+      @param {IExpression**} ptr_expression*
+      @return {IConstant**} ptr_expression*
+    */
+    IConstant** castExpToCte(IExpression **exp) const;
+    /**
       Caster toute la pile
       @param {IConstant::T_CONSTANT} type de constante
       @param {int} limite -1 pour toute la pile
@@ -54,6 +67,7 @@ public:
     void complex(bool);
 
 protected:
+    unsigned int _limit(int x) const;
     IExpression* pop();
     void push(IExpression *);
     Pile _pile;

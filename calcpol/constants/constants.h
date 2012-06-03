@@ -33,6 +33,7 @@ public:
     BasicType<T>& operator+=(const IConstant&);
     BasicType<T>& operator-=(const IConstant&);
     BasicType<T>& operator/=(const IConstant&);
+    BasicType<T>& operator/=(int);
     QRegExp regexp() const;
     BasicType<T>* copy() const;
 
@@ -63,6 +64,7 @@ public:
     Complex& operator+=(const IConstant&);
     Complex& operator-=(const IConstant&);
     Complex& operator/=(const IConstant&);
+    Complex& operator/=(int);
     const IConstant* re() const;
     const IConstant* im() const;
     void re(const IConstant*);
@@ -90,6 +92,7 @@ public:
     Rationnel& operator+=(const IConstant&);
     Rationnel& operator-=(const IConstant&);
     Rationnel& operator/=(const IConstant&);
+    Rationnel& operator/=(int);
     operator long() const;
     operator double() const;
     long num() const;
@@ -163,6 +166,12 @@ template <typename T>
 BasicType<T>& BasicType<T>::operator/=(const IConstant& o) {
     const BasicType<T> p = dynamic_cast<const BasicType<T>&>(o);
     _v /= p._v;
+    return *this;
+}
+
+template <typename T>
+BasicType<T>& BasicType<T>::operator/=(int x) {
+    _v /= x;
     return *this;
 }
 
