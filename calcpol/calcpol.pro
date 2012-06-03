@@ -25,7 +25,8 @@ SOURCES += main.cpp\
     operateurs/ioperateur.cpp \
     constants/rationnel.cpp \
     constants/iconstant.cpp \
-    constants/complex.cpp
+    constants/complex.cpp \
+    cast.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
@@ -42,7 +43,8 @@ HEADERS  += mainwindow.h \
     operateurs/operateurs.h \
     operateurs/ioperateur.h \
     constants/iconstant.h \
-    constants/constants.h
+    constants/constants.h \
+    cast.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \

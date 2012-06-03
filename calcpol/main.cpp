@@ -11,13 +11,13 @@ int main(int argc, char *argv[]) {
     QString s;
     Entier * x = new Entier(42);
     IExpression * exp = x;
-    Calculator::castExp(IConstant::REEL, &exp);
+    Cast::castExp(IConstant::REEL, &exp);
     s = exp->toString();
-    Calculator::castExp(IConstant::RATIONNELLE, &exp);
+    Cast::castExp(IConstant::RATIONNELLE, &exp);
     s = exp->toString();
-    Calculator::castExp(IConstant::COMPLEX, &exp);
+    Cast::castExp(IConstant::COMPLEX, &exp);
     s = exp->toString();
-    Calculator::castExp(IConstant::COMPLEX, &exp, false, IConstant::REEL);
+    Cast::castExp(IConstant::COMPLEX, &exp, false, IConstant::REEL);
     s = exp->toString();
     Entier * y = new Entier(45);
     Complex * c = new Complex(x,y);
