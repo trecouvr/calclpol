@@ -52,43 +52,53 @@ void Calculator::clear() {
 }
 
 IConstant* Calculator::sum(int x, bool apply) {
-    unsigned int limit = this->_limit(x);
     Logger::v("Calculator","sum()");
-    QVector<IConstant*> values = this->getCtes(limit, false);
-    QVector<IConstant*>::iterator it = values.begin();
-    IConstant* result = *it;
-    ++it;
-    for (; it!= values.end(); ++it) {
-        *result += *(*it);
+    unsigned int limit = this->_limit(x);
+    if (limit>0) {
+        QVector<IConstant*> values = this->getCtes(limit, false);
+        QVector<IConstant*>::iterator it = values.begin();
+        IConstant* result = *it;
+        ++it;
+        for (; it!= values.end(); ++it) {
+            *result += *(*it);
+        }
+
+        result = result->copy();
+
+        // suppression des copy
+        for(it = values.begin(); it!= values.end(); ++it) {
+            delete *it;
+        }
+
+        if (apply) {
+            // suppression des valeurs de la pile
+            this->drop(limit);
+            // empilage du résultat
+            this->push(result);
+        }
+
+        return result;
     }
-
-    result = result->copy();
-
-    // suppression des copy
-    for(it = values.begin(); it!= values.end(); ++it) {
-        delete *it;
+    else {
+        return 0;
     }
-
-    if (apply) {
-        // suppression des valeurs de la pile
-        this->drop(limit);
-        // empilage du résultat
-        this->push(result);
-    }
-
-    return result;
 }
 
 IConstant* Calculator::mean(int x, bool apply) {
     Logger::v("Calculator","mean()");
     unsigned int limit = this->_limit(x);
-    IConstant* a = sum(limit,false);
-    *a /= x;
-    if (apply) {
-        this->drop(limit);
-        this->push(a);
+    if (limit>0) {
+        IConstant* a = sum(limit,false);
+        *a /= x;
+        if (apply) {
+            this->drop(limit);
+            this->push(a);
+        }
+        return a;
     }
-    return a;
+    else {
+        return 0;
+    }
 }
 
 Calculator::const_iterator Calculator::begin() const {
@@ -100,16 +110,19 @@ Calculator::const_iterator Calculator::end() const {
 }
 
 void Calculator::eval(const QString &s) {
+    const QRegExp re_mean("mean(\\d)"), re_sum("sum(\\d)");
     // split de l'input
     QStringList list = s.split(' ', QString::SkipEmptyParts);
     // itération sur les différentes expressions
     for (QStringList::iterator it=list.begin(); it != list.end(); ++it) {
-        if (*it == "mean") {
-            this->mean(5,true);
+        if (re_mean.indexIn(*it) != -1) {
+            QStringList l = re_mean.capturedTexts();
+            this->mean(l[1].toInt(),true);
             continue;
         }
-        else if (*it == "sum") {
-            this->sum(5, true);
+        else if (re_sum.indexIn(*it) != -1) {
+            QStringList l = re_sum.capturedTexts();
+            this->sum(l[1].toInt(),true);
             continue;
         }
         // génération de la bonne classe fille IExpression grâce à la factory
