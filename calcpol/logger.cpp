@@ -42,39 +42,39 @@ int logColor(int p)
 
 #define textcolor(param) cout << "\033[" << param << "m"
 
-void Logger::log(int priority, string tag, string msg)
+void Logger::log(int priority, const QString& tag, const QString& msg)
 {
     Logger *l = Instance();
     if (priority > l->lvl)
 	{
 		int color = logColor(priority);
 		textcolor( color );
-		*(l->output) << "[" << priority << "] " << tag << " : " << msg << endl;
+                *(l->output) << "[" << priority << "] " << tag.toStdString() << " : " << msg.toStdString() << endl;
 		textcolor( 37 );
 	}
 }
 
-void Logger::v(string tag, string msg) // Verbose
+void Logger::v(const QString& tag, const QString& msg) // Verbose
 {
     log(10, tag, msg);
 }
 
-void Logger::d(string tag, string msg) // Debug
+void Logger::d(const QString& tag, const QString& msg) // Debug
 {
     log(20, tag, msg);
 }
 
-void Logger::i(string tag, string msg) // Information
+void Logger::i(const QString& tag, const QString& msg) // Information
 {
     log(30, tag, msg);
 }
 
-void Logger::w(string tag, string msg) // Warning
+void Logger::w(const QString& tag, const QString& msg) // Warning
 {
     log(40, tag, msg);
 }
 
-void Logger::e(string tag, string msg) // Error
+void Logger::e(const QString& tag, const QString& msg) // Error
 {
     log(50, tag, msg);
 }
