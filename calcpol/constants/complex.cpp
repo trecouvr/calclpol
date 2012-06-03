@@ -15,8 +15,6 @@ Complex::Complex(const IConstant* re, const IConstant* im) : IConstant(IConstant
     }
 }
 
-Complex::Complex(const Rationnel &r) : IConstant(IConstant::COMPLEX), _re(r.copy()), _im(new Rationnel()) {}
-
 
 Complex::Complex(const IConstant & i) : IConstant(IConstant::COMPLEX) {
     switch (i.t_constant()) {
@@ -38,6 +36,8 @@ Complex::Complex(const IConstant & i) : IConstant(IConstant::COMPLEX) {
         break;
     }
 }
+
+Complex::Complex(const Complex &o) : IConstant(IConstant::COMPLEX), _re(o.re()->copy()), _im(o.im()->copy()) {}
 
 Complex::~Complex() {
     delete _re;

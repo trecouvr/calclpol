@@ -115,7 +115,9 @@ bool Calculator::evalCmd(const QString &s) {
             re_mean("mean(-?\\d+)"),
             re_sum("sum(-?\\d+)"),
             re_dup("dup"),
-            re_swap("swap(\\d)_(\\d)");
+            re_swap("swap(\\d+)_(\\d+)"),
+            re_setmode("setmode_(\\w+)"),
+            re_complex("(no)?complexmode");
     // moyenne
     if (re_mean.exactMatch(s)) {
         QStringList l = re_mean.capturedTexts();
@@ -137,6 +139,33 @@ bool Calculator::evalCmd(const QString &s) {
     else if (re_swap.exactMatch(s)) {
         QStringList l = re_swap.capturedTexts();
         this->swap(l[1].toInt(), l[2].toInt());
+        return true;
+    }
+    // setmode
+    else if (re_setmode.exactMatch(s)) {
+        QStringList l = re_setmode.capturedTexts();
+        if (l[1] == "entier") {
+            _t_constant = IConstant::ENTIER;
+            return true;
+        }
+        else if (l[1] == "reel") {
+            _t_constant = IConstant::REEL;
+            return true;
+        }
+        else if (l[1] == "rationnel") {
+            _t_constant = IConstant::RATIONNELLE;
+            return true;
+        }
+    }
+    // swap
+    else if (re_complex.exactMatch(s)) {
+        QStringList l = re_complex.capturedTexts();
+        if (l[1] == "no") { // "no"
+            _complex = false;
+        }
+        else {
+            _complex = true;
+        }
         return true;
     }
 
@@ -179,14 +208,13 @@ void Calculator::eval(const QString &s) {
 
 QVector<IConstant*> Calculator::getCtes(int x, bool make_pop) {
     QVector<IConstant*> args;
-    IExpression * arg;
+    IConstant * arg;
     unsigned int limit = this->_limit(x);
 
     for (unsigned int i=0; i<limit; ++i) {
+        IExpression * exp = _pile[i]->copy();
         try {
-            arg = _pile[i]->copy();
-            this->castExp(&arg);
-            args.push_back(dynamic_cast<IConstant*>(arg));
+            arg = *(this->castExpToCte(&exp));
         }
         catch (std::exception& e) {
             for (QVector<IConstant*>::iterator it=args.begin(); it!=args.end(); ++it) {
@@ -194,6 +222,7 @@ QVector<IConstant*> Calculator::getCtes(int x, bool make_pop) {
             }
             throw e;
         }
+        args.push_back(arg);
     }
 
     if (make_pop) {

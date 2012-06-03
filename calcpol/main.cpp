@@ -11,6 +11,8 @@ int main(int argc, char *argv[]) {
     QString s;
     Entier * x = new Entier(42);
     IExpression * exp = x;
+    Cast::castExp(IConstant::COMPLEX, &exp, false, IConstant::RATIONNELLE);
+    s = exp->toString();
     Cast::castExp(IConstant::REEL, &exp);
     s = exp->toString();
     Cast::castExp(IConstant::RATIONNELLE, &exp);

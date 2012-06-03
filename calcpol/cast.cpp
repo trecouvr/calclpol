@@ -55,7 +55,9 @@ IConstant** Cast::castCte(IConstant::T_CONSTANT t, IConstant ** pptr_cte, bool c
             // si on ne veut pas garder le type actuel
             if (!cplx_keep) {
                 // on cast d'abbord dans le nouveau type voulue
-                cte = *Cast::castCte(cplx_t, &cte);
+                Cast::castCte(cplx_t, &cte);
+                Cast::castCte(IConstant::COMPLEX, &cte);
+                return &cte;
             }
             n = new Complex(*cte);
             break;
