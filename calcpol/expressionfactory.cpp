@@ -13,7 +13,7 @@ ExpressionFactory::ExpressionFactory() {
 IExpression* ExpressionFactory::parse(const QString& s) {
     for (QVector<IExpression*>::const_iterator it=_expressions.begin(); it!=_expressions.end(); ++it) {
         IExpression * exp = *it;
-        if (s.contains(exp->regexp())) {
+        if (exp->regexp().exactMatch(s)) {
             IExpression * r = exp->copy();
             r->fromString(s);
             return r;

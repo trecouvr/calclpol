@@ -224,8 +224,7 @@ BasicType<T>* BasicType<T>::tangente(bool rad) const {
 
 template <typename T>
 QRegExp BasicType<T>::regexp() const {
-    // TODO
-    return QRegExp(".*");
+    return QRegExp("(\\d+)");
 }
 
 template <typename T>
