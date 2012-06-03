@@ -41,6 +41,15 @@ Complex::Complex(const IConstant & i) : IConstant(IConstant::COMPLEX) {
 
 
 const IConstant* Complex::re() const { return _re; }
+const IConstant* Complex::im() const { return _im; }
+void Complex::re(const IConstant * c) {
+    delete _re;
+    _re = c->copy();
+}
+void Complex::im(const IConstant * c) {
+    delete _im;
+    _im = c->copy();
+}
 
 Complex* Complex::plus(const IConstant*o) const {
     Complex* r = new Complex(*this);

@@ -63,6 +63,9 @@ public:
     Complex& operator-=(const IConstant&);
     Complex& operator/=(const IConstant&);
     const IConstant* re() const;
+    const IConstant* im() const;
+    void re(const IConstant*);
+    void im(const IConstant*);
 
 protected:
     void fromString(const QString &);
