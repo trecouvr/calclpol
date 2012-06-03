@@ -4,6 +4,8 @@
 #include <QString>
 #include <QRegExp>
 
+#include <exception>
+
 /**
   Class générique représentant une donnée de la pile
 */

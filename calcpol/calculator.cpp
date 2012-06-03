@@ -4,8 +4,7 @@
 
 #include <QStringList>
 
-Calculator::Calculator()
-{
+Calculator::Calculator() : _t_constant(IConstant::ENTIER), _complex(false) {
 	Logger::i("Calculator","Constructeur");
 }
 
@@ -113,13 +112,31 @@ void Calculator::eval(const QString &s) {
 
 void Calculator::applyOperator(const IOperateur * op) {
     QVector<IConstant*> args;
+    IExpression * arg;
     // récupération des arguments sur la pile
+    if (op->unarite() > _pile.size()) {
+        throw 42;
+    }
     for (unsigned int i=0; i<op->unarite(); ++i) {
-        args.push_back(dynamic_cast<IConstant*>(this->pop()));
+        try {
+            arg = _pile[i]->copy();
+            this->castExp(&arg);
+            args.push_back(dynamic_cast<IConstant*>(arg));
+        }
+        catch (std::exception& e) {
+            for (QVector<IConstant*>::iterator it=args.begin(); it!=args.end(); ++it) {
+                delete (*it);
+            }
+            throw e;
+        }
     }
     // application de l'opérateur
     IConstant * result = op->exec(0,args);
-    // empilage du résultat
+    // si on a eu aucune erreur, on peut supprimer les arguments de la
+    // pile et empiler le résultat
+    for (unsigned int i=0; i<op->unarite(); ++i) {
+        this->pop();
+    }
     this->push(result);
 }
 
