@@ -18,11 +18,46 @@ public:
     Calculator();
     const_iterator begin() const;
     const_iterator end() const;
+    /**
+      Mettre une expression sur le dessus de la pile (sans l'évaluer).
+    */
+    void push(IExpression *);
+    /**
+      Inverser deux éléments de la pile, l'index commence à 0.
+      @param {int} x
+      @param {int} y
+    */
     void swap(int x, int y);
+    /**
+      Supprimer de la pile les X premiers éléments.
+      @param {int} x -1 pour toute la pile
+    */
     void drop(int x);
+    /**
+      Ajouter à la pile une copie du premier élément.
+    */
     void dup();
+    /**
+      Vider la pile.
+    */
     void clear();
+    /**
+      Faire la somme des x premiers éléments.
+      Si apply vaut true,
+      alors la pile sera modifée, les x premiers éléments seront supprimé
+      et resultat sera push.
+      @param {int} x -1 pour toute la pile
+      @param {bool} apply appliquer ou non le calcul à la pile
+    */
     IConstant* sum(int x, bool apply=true);
+    /**
+      Faire la moyenne des x premiers éléments.
+      Si apply vaut true,
+      alors la pile sera modifée, les x premiers éléments seront supprimé
+      et le resultat sera push.
+      @param {int} x -1 pour toute la pile
+      @param {bool} apply appliquer ou non le calcul à la pile
+    */
     IConstant* mean(int x, bool apply);
     /**
       Retourne les X première valeurs de la pile casté en IConstant* du mode actuel,
@@ -73,9 +108,12 @@ public:
     void complex(bool);
 
 protected:
+    /**
+      Borner la valeur de x tq 0 <= x <= TAILLE_PILE
+      @param {int} x -1 pour toute la pile
+      @return {unsigned int} x_borne
+    */
     unsigned int _limit(int x) const;
-    IExpression* pop();
-    void push(IExpression *);
     Pile _pile;
     ExpressionFactory _factory;
     IConstant::T_CONSTANT _t_constant;

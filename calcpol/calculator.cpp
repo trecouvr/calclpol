@@ -8,13 +8,6 @@ Calculator::Calculator() : _t_constant(IConstant::ENTIER), _complex(false) {
     Logger::i("Calculator","Constructeur");
 }
 
-IExpression* Calculator::pop()
-{
-    Logger::v("Calculator","pop()");
-    IExpression* r = _pile[0];
-    _pile.pop_front();
-    return r;
-}
 
 void Calculator::push(IExpression * exp)
 {
@@ -226,9 +219,7 @@ QVector<IConstant*> Calculator::getCtes(int x, bool make_pop) {
     }
 
     if (make_pop) {
-        for (unsigned int i=0; i<limit; ++i) {
-            this->pop();
-        }
+        this->drop(limit);
     }
 
     return args;
