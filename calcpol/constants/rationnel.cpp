@@ -70,6 +70,13 @@ Rationnel& Rationnel::operator/=(int x) {
     return *this;
 }
 
+Rationnel& Rationnel::operator*=(const IConstant& o) {
+	const Rationnel& p = dynamic_cast<const Rationnel&>(o);
+	_den *= p._den;
+	_num *= p._num;
+	return *this;
+}
+
 long pgcd(long a,long b)
 {
 	return b ?  pgcd(b,a%b) : a;

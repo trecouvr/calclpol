@@ -15,6 +15,8 @@ ExpressionFactory::ExpressionFactory() {
 	_expressions.push_back(new OperateurLog());
 	_expressions.push_back(new OperateurInv());
 	_expressions.push_back(new OperateurSqrt());
+	_expressions.push_back(new OperateurSqr());
+	_expressions.push_back(new OperateurCube());
 
     _expressions.push_back(new Entier());
     _expressions.push_back(new Reel());

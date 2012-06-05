@@ -93,6 +93,19 @@ Complex& Complex::operator/=(int x) {
     return *this;
 }
 
+Complex& Complex::operator*=(const IConstant& o) {
+	const Complex& p = dynamic_cast<const Complex&>(o);
+	double re = (((double) *(_re) * (double) *(p)._re) - ((double) *(_im) * (double) *(p)._im));
+	double im = (((double) *(_re) * (double) *(p)._im) + ((double) *(_im) * (double) *(p)._re));
+	IConstant * retmp = _re->copy(re);
+	IConstant * imtmp = _im->copy(im);
+	delete _re;
+	delete _im;
+	_re = retmp;
+	_im = imtmp;
+	return *this;
+}
+
 
 void Complex::fromString(const QString &) {
     // TODO

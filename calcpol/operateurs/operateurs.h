@@ -14,5 +14,7 @@
 #include "operateurlog.h"
 #include "operateurinv.h"
 #include "operateursqrt.h"
+#include "operateursqr.h"
+#include "operateurcube.h"
 
 #endif // OPERATEURS_H
