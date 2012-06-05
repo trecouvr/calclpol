@@ -19,6 +19,7 @@ public:
 
 private slots:
     void on_actionPreferences_triggered();
+    void on_pb_pressed();
 
 private:
     Ui::MainWindow *ui;
