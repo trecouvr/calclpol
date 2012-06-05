@@ -26,63 +26,63 @@
       <item row="7" column="0">
        <widget class="QPushButton" name="pb_sin">
         <property name="text">
-         <string>sin</string>
+         <string> sin </string>
         </property>
        </widget>
       </item>
       <item row="7" column="1">
        <widget class="QPushButton" name="pb_cos">
         <property name="text">
-         <string>cos</string>
+         <string> cos </string>
         </property>
        </widget>
       </item>
       <item row="7" column="2">
        <widget class="QPushButton" name="tp_tan">
         <property name="text">
-         <string>tan</string>
+         <string> tan </string>
         </property>
        </widget>
       </item>
       <item row="8" column="0">
        <widget class="QPushButton" name="pb_ln">
         <property name="text">
-         <string>ln</string>
+         <string> ln </string>
         </property>
        </widget>
       </item>
       <item row="8" column="1">
        <widget class="QPushButton" name="pb_log">
         <property name="text">
-         <string>log</string>
+         <string> log </string>
         </property>
        </widget>
       </item>
       <item row="8" column="2">
        <widget class="QPushButton" name="pb_inv">
         <property name="text">
-         <string>inv</string>
+         <string> inv </string>
         </property>
        </widget>
       </item>
       <item row="9" column="0">
        <widget class="QPushButton" name="pb_sqrt">
         <property name="text">
-         <string>sqrt</string>
+         <string> sqrt </string>
         </property>
        </widget>
       </item>
       <item row="9" column="1">
        <widget class="QPushButton" name="pb_qrt">
         <property name="text">
-         <string>qrt</string>
+         <string> qrt </string>
         </property>
        </widget>
       </item>
       <item row="9" column="2">
        <widget class="QPushButton" name="pb_cube">
         <property name="text">
-         <string>cube</string>
+         <string> cube </string>
         </property>
        </widget>
       </item>
@@ -186,62 +186,52 @@
         </property>
        </widget>
       </item>
-      <item row="15" column="1" colspan="2">
-       <widget class="QPushButton" name="pb_eval">
-        <property name="text">
-         <string>eval</string>
-        </property>
-        <property name="shortcut">
-         <string>Return</string>
-        </property>
-       </widget>
-      </item>
       <item row="5" column="0">
        <widget class="QPushButton" name="pb_sum">
         <property name="text">
-         <string>sum</string>
+         <string> sum </string>
         </property>
        </widget>
       </item>
       <item row="5" column="1">
        <widget class="QPushButton" name="pb_mean">
         <property name="text">
-         <string>mean</string>
+         <string> mean </string>
         </property>
        </widget>
       </item>
       <item row="5" column="2">
        <widget class="QPushButton" name="pb_clear">
         <property name="text">
-         <string>clear</string>
+         <string> clear </string>
         </property>
        </widget>
       </item>
       <item row="6" column="0">
        <widget class="QPushButton" name="pb_dup">
         <property name="text">
-         <string>dup</string>
+         <string> dup </string>
         </property>
        </widget>
       </item>
       <item row="6" column="1">
        <widget class="QPushButton" name="pb_drop">
         <property name="text">
-         <string>drop</string>
+         <string> drop </string>
         </property>
        </widget>
       </item>
       <item row="6" column="2">
        <widget class="QPushButton" name="pb_fact">
         <property name="text">
-         <string>fact</string>
+         <string> fact </string>
         </property>
        </widget>
       </item>
       <item row="15" column="3">
        <widget class="QPushButton" name="pb_div">
         <property name="text">
-         <string>/</string>
+         <string> / </string>
         </property>
         <property name="shortcut">
          <string>/</string>
@@ -251,7 +241,7 @@
       <item row="11" column="3">
        <widget class="QPushButton" name="pb_minus">
         <property name="text">
-         <string>-</string>
+         <string> - </string>
         </property>
         <property name="shortcut">
          <string>-</string>
@@ -274,7 +264,7 @@
       <item row="14" column="3">
        <widget class="QPushButton" name="pb_time">
         <property name="text">
-         <string>*</string>
+         <string> * </string>
         </property>
         <property name="shortcut">
          <string>*</string>
@@ -284,10 +274,30 @@
       <item row="13" column="3">
        <widget class="QPushButton" name="pb_plus">
         <property name="text">
-         <string>+</string>
+         <string> + </string>
         </property>
         <property name="shortcut">
          <string>+</string>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="2">
+       <widget class="QPushButton" name="pb_eval">
+        <property name="text">
+         <string>eval</string>
+        </property>
+        <property name="shortcut">
+         <string>Return</string>
+        </property>
+       </widget>
+      </item>
+      <item row="15" column="1">
+       <widget class="QPushButton" name="pb_space">
+        <property name="text">
+         <string>space</string>
+        </property>
+        <property name="shortcut">
+         <string>Space</string>
         </property>
        </widget>
       </item>

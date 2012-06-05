@@ -33,6 +33,9 @@ void MainWindow::on_pb_pressed() {
     if (value == "eval") {
         ui->pile_widget->on_input_returnPressed();
     }
+    else if (value == "space") {
+        ui->pile_widget->addInput(" ");
+    }
     else {
         ui->pile_widget->addInput(value);
     }
