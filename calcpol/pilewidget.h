@@ -20,6 +20,9 @@ public:
     explicit PileWidget(QWidget *parent = 0);
     ~PileWidget();
 
+public slots:
+    void setComplexMode(bool);
+
 private slots:
     void on_input_returnPressed();
 

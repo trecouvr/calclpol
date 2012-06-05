@@ -116,7 +116,7 @@ Complex* Complex::copy() const {
 
 Complex* Complex::copy(double v) const {
     IConstant * re = _re->copy(v);
-    return new Complex(_re);
+    return new Complex(re);
 }
 
 Complex::operator double() const {
