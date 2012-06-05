@@ -26,7 +26,8 @@ void PileWidget::eval() {
     _listModel.setStringList(list);
 }
 
-void PileWidget::on_input_returnPressed()
-{
+void PileWidget::on_input_returnPressed() {
     eval();
 }
+
+void PileWidget::setComplexMode(bool b) {_calculator.complex(b); }

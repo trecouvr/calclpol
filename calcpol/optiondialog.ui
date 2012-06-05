@@ -20,24 +20,33 @@
       <string>Type</string>
      </property>
      <layout class="QGridLayout" name="gridLayout">
-      <item row="0" column="0">
-       <widget class="QRadioButton" name="radioButton">
+      <item row="1" column="0">
+       <widget class="QRadioButton" name="rb_entier">
         <property name="text">
          <string>entier</string>
         </property>
-       </widget>
-      </item>
-      <item row="2" column="0">
-       <widget class="QRadioButton" name="radioButton_3">
-        <property name="text">
-         <string>reel</string>
+        <property name="checked">
+         <bool>false</bool>
         </property>
        </widget>
       </item>
-      <item row="1" column="0">
-       <widget class="QRadioButton" name="radioButton_2">
+      <item row="3" column="0">
+       <widget class="QRadioButton" name="rb_rationnel">
         <property name="text">
          <string>rationel</string>
+        </property>
+        <property name="checked">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0">
+       <widget class="QRadioButton" name="rb_reel">
+        <property name="text">
+         <string>reel</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -51,16 +60,19 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_2">
       <item row="0" column="0">
-       <widget class="QRadioButton" name="radioButton_4">
+       <widget class="QRadioButton" name="rb_degres">
         <property name="text">
-         <string>RadioButton</string>
+         <string>Degrès</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QRadioButton" name="radioButton_5">
+       <widget class="QRadioButton" name="rb_radians">
         <property name="text">
-         <string>RadioButton</string>
+         <string>Radians</string>
         </property>
        </widget>
       </item>
@@ -74,16 +86,19 @@
      </property>
      <layout class="QGridLayout" name="gridLayout_3">
       <item row="0" column="0">
-       <widget class="QCheckBox" name="checkBox">
+       <widget class="QCheckBox" name="cb_complex">
         <property name="text">
          <string>nombres complexes</string>
         </property>
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QCheckBox" name="checkBox_2">
+       <widget class="QCheckBox" name="cb_clavier">
         <property name="text">
          <string>clavier</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>
@@ -105,7 +120,6 @@
   <zorder>groupBox</zorder>
   <zorder>groupBox_2</zorder>
   <zorder>groupBox_3</zorder>
-  <zorder>radioButton_2</zorder>
  </widget>
  <resources/>
  <connections>

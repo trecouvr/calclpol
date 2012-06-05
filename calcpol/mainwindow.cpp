@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
    _optionDialog = new OptionDialog(this);
+   connect(_optionDialog, SIGNAL(accepted()), this, SLOT(on_preferences_ok()));
 }
 
 MainWindow::~MainWindow()
