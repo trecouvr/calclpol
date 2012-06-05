@@ -105,8 +105,8 @@ Calculator::const_iterator Calculator::end() const {
 
 bool Calculator::evalCmd(const QString &s) {
     const QRegExp
-            re_mean("mean(-?\\d+)"),
-            re_sum("sum(-?\\d+)"),
+            re_mean("mean(-?\\d+)?"),
+            re_sum("sum(-?\\d+)?"),
             re_dup("dup"),
             re_swap("swap(\\d+)_(\\d+)"),
             re_setmode("setmode_(\\w+)"),
@@ -114,13 +114,23 @@ bool Calculator::evalCmd(const QString &s) {
     // moyenne
     if (re_mean.exactMatch(s)) {
         QStringList l = re_mean.capturedTexts();
-        this->mean(l[1].toInt(),true);
+        if (l[1].isEmpty()) {
+            this->mean(-1,true);
+        }
+        else {
+            this->mean(l[1].toInt(),true);
+        }
         return true;
     }
     // somme
     else if (re_sum.exactMatch(s)) {
         QStringList l = re_sum.capturedTexts();
-        this->sum(l[1].toInt(),true);
+        if (l[1].isEmpty()) {
+            this->sum(-1,true);
+        }
+        else {
+            this->sum(l[1].toInt(),true);
+        }
         return true;
     }
     // duplication
@@ -232,7 +242,7 @@ void Calculator::applyOperator(const IOperateur * op) {
     }
     // récupérer les X première valeurs sans les supprimer de la pile
     QVector<IConstant*> args = this->getCtes(op->unarite(), false);
-    // application de l'opérateur
+    // application de l'opérateur TODO remplacer le 0 par _t_constant & _complex
     IConstant * result = op->exec(0,args);
     // si on a eu aucune erreur, on peut supprimer les arguments de la
     // pile et empiler le résultat

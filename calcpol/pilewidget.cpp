@@ -31,3 +31,8 @@ void PileWidget::on_input_returnPressed() {
 }
 
 void PileWidget::setComplexMode(bool b) {_calculator.complex(b); }
+
+void PileWidget::addInput(const QString& s) {
+    QString current = ui->input->text();
+    ui->input->setText(ui->input->text()+" "+s+" ");
+}

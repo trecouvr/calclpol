@@ -19,15 +19,14 @@ class PileWidget : public QWidget
 public:
     explicit PileWidget(QWidget *parent = 0);
     ~PileWidget();
+    void eval();
+    void setComplexMode(bool);
+    void addInput(const QString&);
 
 public slots:
-    void setComplexMode(bool);
-
-private slots:
     void on_input_returnPressed();
 
 private:
-    void eval();
     Ui::PileWidget *ui;
     Calculator _calculator;
     QStringListModel _listModel;
