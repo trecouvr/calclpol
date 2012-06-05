@@ -16,5 +16,7 @@
 #include "operateursqrt.h"
 #include "operateursqr.h"
 #include "operateurcube.h"
+#include "operateurmult.h"
+#include "operateurdiv.h"
 
 #endif // OPERATEURS_H

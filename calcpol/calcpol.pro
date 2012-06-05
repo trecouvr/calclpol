@@ -38,7 +38,9 @@ SOURCES += main.cpp\
     operateurs/operateursqrt.cpp \
     operateurs/operateurinv.cpp \
     operateurs/operateursqr.cpp \
-    operateurs/operateurcube.cpp
+    operateurs/operateurcube.cpp \
+    operateurs/operateurdiv.cpp \
+    operateurs/operateurmult.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
@@ -68,7 +70,9 @@ HEADERS  += mainwindow.h \
     operateurs/operateursqrt.h \
     operateurs/operateurinv.h \
     operateurs/operateursqr.h \
-    operateurs/operateurcube.h
+    operateurs/operateurcube.h \
+    operateurs/operateurdiv.h \
+    operateurs/operateurmult.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \
