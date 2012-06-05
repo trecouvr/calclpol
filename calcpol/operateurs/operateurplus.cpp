@@ -4,7 +4,9 @@ OperateurPlus::OperateurPlus() : IOperateur(2,true,true,true,true) {
 }
 
 IConstant* OperateurPlus::exec(const QVector<IConstant*>& args) const {
-    return args[0]->plus(args[1]);
+    IConstant * r = args[0]->copy();
+    *r += *args[1];
+    return r;
 }
 
 
