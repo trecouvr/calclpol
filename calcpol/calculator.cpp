@@ -4,7 +4,7 @@
 
 #include <QStringList>
 
-Calculator::Calculator() : _t_constant(IConstant::ENTIER), _complex(false) {
+Calculator::Calculator() : _t_constant(IConstant::REEL), _complex(false) {
     Logger::i("Calculator","Constructeur");
 }
 
