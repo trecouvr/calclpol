@@ -12,11 +12,11 @@ IConstant* OperateurTangente::exec(const QVector<IConstant*>& args) const {
 }
 
 QString OperateurTangente::toString() const {
-    return "sin";
+	return "tan";
 }
 
 QRegExp OperateurTangente::regexp() const {
-    return QRegExp("^sin$", Qt::CaseInsensitive);
+	return QRegExp("^tan$", Qt::CaseInsensitive);
 }
 
 OperateurTangente* OperateurTangente::copy() const {

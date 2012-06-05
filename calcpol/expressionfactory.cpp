@@ -7,6 +7,11 @@ ExpressionFactory::ExpressionFactory() {
     _expressions.push_back(new OperateurSinus());
     _expressions.push_back(new OperateurCosinus());
     _expressions.push_back(new OperateurTangente());
+	_expressions.push_back(new OperateurFactorielle());
+	_expressions.push_back(new OperateurSinh());
+	_expressions.push_back(new OperateurCosh());
+	_expressions.push_back(new OperateurTanh());
+
     _expressions.push_back(new Entier());
     _expressions.push_back(new Reel());
     _expressions.push_back(new Complex());
