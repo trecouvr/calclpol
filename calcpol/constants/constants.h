@@ -84,6 +84,7 @@ public:
     Rationnel(const IConstant & i);
     Rationnel(const Rationnel&);
     Rationnel* copy() const;
+	Rationnel* copy(double) const;
     Rationnel* plus(const IConstant*) const;
     Rationnel* minus(const IConstant*) const;
     QString toString() const;
@@ -94,6 +95,7 @@ public:
     operator long() const;
     operator double() const;
     long num() const;
+	void simplifier();
 
 protected:
     void fromString(const QString &);

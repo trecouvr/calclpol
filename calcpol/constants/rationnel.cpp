@@ -1,4 +1,5 @@
 #include "constants.h"
+#define CONST_CONVERSION 10000
 
 Rationnel::Rationnel(long num, long den) : IConstant(IConstant::RATIONNELLE), _num(num), _den(den) {}
 
@@ -13,10 +14,14 @@ Rationnel::Rationnel(const IConstant & i) : IConstant(IConstant::RATIONNELLE) {
             break;
         }
     case IConstant::ENTIER:
-    case IConstant::REEL:
         _num = (long) i;
         _den = 1;
         break;
+	case IConstant::REEL:
+		_num = (long) ((double) i * CONST_CONVERSION);
+		_den = CONST_CONVERSION;
+		simplifier();
+		break;
     case IConstant::RATIONNELLE:
         _num = dynamic_cast<const Rationnel&>(i)._num;
         _den = dynamic_cast<const Rationnel&>(i)._den;
@@ -65,6 +70,19 @@ Rationnel& Rationnel::operator/=(int x) {
     return *this;
 }
 
+long pgcd(long a,long b)
+{
+	return b ?  pgcd(b,a%b) : a;
+}
+
+#define abs(x) ((x) > 0 ? (x) : -(x))
+
+void Rationnel::simplifier() {
+	Logger::v("Rationnel","simplifier()");
+	long p = pgcd(abs(_den),abs(_num));
+	_den = _den / p;
+	_num = _den / p;
+}
 
 void Rationnel::fromString(const QString &) {
     // TODO
@@ -80,4 +98,13 @@ QRegExp Rationnel::regexp() const {
 
 Rationnel* Rationnel::copy() const {
     return new Rationnel(*this);
+}
+
+Rationnel* Rationnel::copy(double d) const {
+	Logger::v("Rationnel","copy(double)");
+	Rationnel* r = new Rationnel(*this);
+	r->_num = (long) (d * CONST_CONVERSION);
+	r->_den = CONST_CONVERSION;
+	r->simplifier();
+	return r;
 }
