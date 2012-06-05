@@ -29,7 +29,10 @@ SOURCES += main.cpp\
     cast.cpp \
     operateurs/operateurcosinus.cpp \
     operateurs/operateurtangente.cpp \
-    operateurs/operateurfactorielle.cpp
+    operateurs/operateurfactorielle.cpp \
+    operateurs/operateursinh.cpp \
+    operateurs/operateurcosh.cpp \
+    operateurs/operateurtanh.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
@@ -50,7 +53,10 @@ HEADERS  += mainwindow.h \
     cast.h \
     operateurs/operateurcosinus.h \
     operateurs/operateurtangente.h \
-    operateurs/operateurfactorielle.h
+    operateurs/operateurfactorielle.h \
+    operateurs/operateursinh.h \
+    operateurs/operateurcosh.h \
+    operateurs/operateurtanh.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \
