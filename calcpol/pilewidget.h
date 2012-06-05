@@ -25,6 +25,7 @@ public:
 public slots:
     void on_input_returnPressed();
     void setComplexMode(bool);
+    void setConstantMode(IConstant::T_CONSTANT t);
 
 private:
     Ui::PileWidget *ui;

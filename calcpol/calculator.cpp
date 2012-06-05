@@ -277,6 +277,7 @@ void Calculator::castPile(IConstant::T_CONSTANT t, int limit) {
 }
 
 void Calculator::complex(bool b) {_complex = b;}
+void Calculator::t_constant(IConstant::T_CONSTANT t) {_t_constant = t;}
 
 unsigned int Calculator::_limit(int x) const {
     unsigned int limit=0;

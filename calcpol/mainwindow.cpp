@@ -15,6 +15,9 @@ MainWindow::MainWindow(QWidget *parent) :
        connect(b, SIGNAL(released()), this, SLOT(on_pb_pressed()));
    }
    connect(ui->cb_complex, SIGNAL(toggled(bool)), ui->pile_widget, SLOT(setComplexMode(bool)));
+   connect(ui->rb_entier, SIGNAL(toggled(bool)), this, SLOT(setEntierMode()));
+   connect(ui->rb_reel, SIGNAL(toggled(bool)), this, SLOT(setReelMode()));
+   connect(ui->rb_rationnel, SIGNAL(toggled(bool)), this, SLOT(setRationnelMode()));
 }
 
 MainWindow::~MainWindow()
@@ -40,5 +43,17 @@ void MainWindow::on_pb_pressed() {
     else {
         ui->pile_widget->addInput(value);
     }
+}
+
+void MainWindow::setEntierMode() {
+    ui->pile_widget->setConstantMode(IConstant::ENTIER);
+}
+
+void MainWindow::setReelMode() {
+    ui->pile_widget->setConstantMode(IConstant::REEL);
+}
+
+void MainWindow::setRationnelMode() {
+    ui->pile_widget->setConstantMode(IConstant::RATIONNELLE);
 }
 

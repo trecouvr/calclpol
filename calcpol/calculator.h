@@ -106,6 +106,7 @@ public:
       @param {bool} actif
     */
     void complex(bool);
+    void t_constant(IConstant::T_CONSTANT t);
 
 protected:
     /**
