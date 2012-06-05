@@ -6,5 +6,6 @@
 #include "operateursinus.h"
 #include "operateurcosinus.h"
 #include "operateurtangente.h"
+#include "operateurfactorielle.h"
 
 #endif // OPERATEURS_H

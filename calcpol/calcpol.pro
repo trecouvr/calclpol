@@ -28,7 +28,8 @@ SOURCES += main.cpp\
     constants/complex.cpp \
     cast.cpp \
     operateurs/operateurcosinus.cpp \
-    operateurs/operateurtangente.cpp
+    operateurs/operateurtangente.cpp \
+    operateurs/operateurfactorielle.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
@@ -48,7 +49,8 @@ HEADERS  += mainwindow.h \
     constants/constants.h \
     cast.h \
     operateurs/operateurcosinus.h \
-    operateurs/operateurtangente.h
+    operateurs/operateurtangente.h \
+    operateurs/operateurfactorielle.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \
