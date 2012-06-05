@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
        QPushButton * b = *it;
        connect(b, SIGNAL(released()), this, SLOT(on_pb_pressed()));
    }
+   connect(ui->cb_complex, SIGNAL(toggled(bool)), ui->pile_widget, SLOT(setComplexMode(bool)));
 }
 
 MainWindow::~MainWindow()

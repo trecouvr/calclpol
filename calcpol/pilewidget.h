@@ -20,11 +20,11 @@ public:
     explicit PileWidget(QWidget *parent = 0);
     ~PileWidget();
     void eval();
-    void setComplexMode(bool);
     void addInput(const QString&);
 
 public slots:
     void on_input_returnPressed();
+    void setComplexMode(bool);
 
 private:
     Ui::PileWidget *ui;
