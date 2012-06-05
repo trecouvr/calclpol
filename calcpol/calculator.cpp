@@ -184,9 +184,9 @@ void Calculator::eval(const QString &s) {
         IExpression * exp = _factory.parse(*it);
         // si la factory n'a pas réussi à parser alors c'est peut être une commande
         if (exp==0) {
-            if (!this->evalCmd(s)) {
+            if (!this->evalCmd(*it)) {
                 // bah c'est rien de connu !
-                Logger::w("Calculator", "eval, l'input n'a pas pu être parsé, input="+s);
+                Logger::w("Calculator", "eval, l'input n'a pas pu être parsé, input="+*it);
             }
         }
         else {
