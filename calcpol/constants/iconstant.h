@@ -24,10 +24,15 @@ public:
     virtual IConstant& operator/=(const IConstant&) = 0;
     virtual IConstant& operator/=(int) = 0;
     /**
-      Créer une copie du même type
+      Créer une copie du même type.
       @return {IConstant*} copy
     */
     virtual IConstant* copy() const = 0;
+    /**
+      Créer une copie du même type, et l'initialise à partir d'un double.
+      @return {IConstant*} copy
+    */
+    virtual IConstant* copy(double) const = 0;
     /**
       Additionner avec une autre constante dans un nouvel objet
       @param {const IConstant*} other

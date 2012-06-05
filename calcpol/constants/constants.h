@@ -35,6 +35,7 @@ public:
     BasicType<T>& operator/=(int);
     QRegExp regexp() const;
     BasicType<T>* copy() const;
+    BasicType<T>* copy(double) const;
 
 protected:
     void fromString(const QString &);
@@ -55,6 +56,7 @@ public:
     operator long() const;
     operator double() const;
     Complex* copy() const;
+    Complex* copy(double) const;
     Complex* plus(const IConstant*) const;
     Complex* minus(const IConstant*) const;
     QString toString() const;
@@ -84,6 +86,7 @@ public:
     Rationnel(const IConstant & i);
     Rationnel(const Rationnel&);
     Rationnel* copy() const;
+    Rationnel* copy(double) const;
     Rationnel* plus(const IConstant*) const;
     Rationnel* minus(const IConstant*) const;
     QString toString() const;
@@ -228,6 +231,11 @@ void BasicType<T>::fromString(const QString & s) {
 template <typename T>
 BasicType<T>* BasicType<T>::copy() const {
     return new BasicType<T>(*this);
+}
+
+template <typename T>
+BasicType<T>* BasicType<T>::copy(double v) const {
+    return new BasicType<T>(v);
 }
 
 template <typename T>
