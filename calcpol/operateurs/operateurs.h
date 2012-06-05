@@ -10,6 +10,9 @@
 #include "operateurtanh.h"
 #include "operateurcosh.h"
 #include "operateursinh.h"
-
+#include "operateurln.h"
+#include "operateurlog.h"
+#include "operateurinv.h"
+#include "operateursqrt.h"
 
 #endif // OPERATEURS_H
