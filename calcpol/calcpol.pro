@@ -32,7 +32,9 @@ SOURCES += main.cpp\
     operateurs/operateurfactorielle.cpp \
     operateurs/operateursinh.cpp \
     operateurs/operateurcosh.cpp \
-    operateurs/operateurtanh.cpp
+    operateurs/operateurtanh.cpp \
+    operateurs/operateurln.cpp \
+    operateurs/operateurlog.cpp
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
@@ -56,7 +58,9 @@ HEADERS  += mainwindow.h \
     operateurs/operateurfactorielle.h \
     operateurs/operateursinh.h \
     operateurs/operateurcosh.h \
-    operateurs/operateurtanh.h
+    operateurs/operateurtanh.h \
+    operateurs/operateurln.h \
+    operateurs/operateurlog.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \

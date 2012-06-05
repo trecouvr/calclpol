@@ -11,6 +11,8 @@ ExpressionFactory::ExpressionFactory() {
 	_expressions.push_back(new OperateurSinh());
 	_expressions.push_back(new OperateurCosh());
 	_expressions.push_back(new OperateurTanh());
+	_expressions.push_back(new OperateurLn());
+	_expressions.push_back(new OperateurLog());
 
     _expressions.push_back(new Entier());
     _expressions.push_back(new Reel());
