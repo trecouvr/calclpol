@@ -62,9 +62,10 @@ Rationnel& Rationnel::operator-=(const IConstant& o) {
     return *this;
 }
 
-Rationnel& Rationnel::operator/=(const IConstant& /*o*/) {
-    //const Rationnel& p = dynamic_cast<const Rationnel&>(o);
-    // TODO
+Rationnel& Rationnel::operator/=(const IConstant& o) {
+    const Rationnel& p = dynamic_cast<const Rationnel&>(o);
+    _num *= p._den;
+    _den *= p._num;
     return *this;
 }
 
