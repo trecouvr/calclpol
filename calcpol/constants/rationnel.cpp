@@ -1,14 +1,14 @@
 #include "constants.h"
 #define CONST_CONVERSION 10000
 
-Rationnel::Rationnel(long num, long den) : IConstant(IConstant::RATIONNELLE), _num(num), _den(den) {}
+Rationnel::Rationnel(long num, long den) : IConstant(IConstant::RATIONNEL), _num(num), _den(den) {}
 
-Rationnel::Rationnel(const Rationnel& o) : IConstant(IConstant::RATIONNELLE), _num(o._num), _den(o._den) {}
+Rationnel::Rationnel(const Rationnel& o) : IConstant(IConstant::RATIONNEL), _num(o._num), _den(o._den) {}
 
-Rationnel::Rationnel(const IConstant & i) : IConstant(IConstant::RATIONNELLE) {
+Rationnel::Rationnel(const IConstant & i) : IConstant(IConstant::RATIONNEL) {
     switch (i.t_constant()) {
     case IConstant::COMPLEX:
-        if (dynamic_cast<const Complex&>(i).re()->t_constant() == IConstant::RATIONNELLE) {
+        if (dynamic_cast<const Complex&>(i).re()->t_constant() == IConstant::RATIONNEL) {
             _num = dynamic_cast<const Rationnel*>(dynamic_cast<const Complex&>(i).re())->_num;
             _den = dynamic_cast<const Rationnel*>(dynamic_cast<const Complex&>(i).re())->_den;
             break;
@@ -22,7 +22,7 @@ Rationnel::Rationnel(const IConstant & i) : IConstant(IConstant::RATIONNELLE) {
 		_den = CONST_CONVERSION;
 		simplifier();
 		break;
-    case IConstant::RATIONNELLE:
+    case IConstant::RATIONNEL:
         _num = dynamic_cast<const Rationnel&>(i)._num;
         _den = dynamic_cast<const Rationnel&>(i)._den;
         break;

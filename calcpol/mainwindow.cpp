@@ -54,6 +54,6 @@ void MainWindow::setReelMode() {
 }
 
 void MainWindow::setRationnelMode() {
-    ui->pile_widget->setConstantMode(IConstant::RATIONNELLE);
+    ui->pile_widget->setConstantMode(IConstant::RATIONNEL);
 }
 

@@ -156,7 +156,7 @@ bool Calculator::evalCmd(const QString &s) {
             return true;
         }
         else if (l[1] == "rationnel") {
-            _t_constant = IConstant::RATIONNELLE;
+            _t_constant = IConstant::RATIONNEL;
             return true;
         }
     }

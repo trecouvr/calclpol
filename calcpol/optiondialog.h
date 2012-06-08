@@ -12,7 +12,7 @@ class OptionDialog : public QDialog
     Q_OBJECT
 
 public:
-    enum T_CONSTANT {ENTIER, REEL, RATIONNELLE};
+    enum T_CONSTANT {ENTIER, REEL, RATIONNEL};
     struct Options {
         T_CONSTANT t_constant;
         bool radian;

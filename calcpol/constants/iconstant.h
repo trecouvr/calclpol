@@ -13,7 +13,7 @@
 class IConstant : public IExpression
 {
 public:
-    enum T_CONSTANT {ENTIER, REEL, RATIONNELLE, COMPLEX};
+    enum T_CONSTANT {ENTIER, REEL, RATIONNEL, COMPLEX};
     IConstant(T_CONSTANT t);
     virtual ~IConstant();
     T_CONSTANT t_constant() const;

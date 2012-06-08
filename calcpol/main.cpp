@@ -11,11 +11,11 @@ int main(int argc, char *argv[]) {
     QString s;
     Entier * x = new Entier(42);
     IExpression * exp = x;
-    Cast::castExp(IConstant::COMPLEX, &exp, false, IConstant::RATIONNELLE);
+    Cast::castExp(IConstant::COMPLEX, &exp, false, IConstant::RATIONNEL);
     s = exp->toString();
     Cast::castExp(IConstant::REEL, &exp);
     s = exp->toString();
-    Cast::castExp(IConstant::RATIONNELLE, &exp);
+    Cast::castExp(IConstant::RATIONNEL, &exp);
     s = exp->toString();
     Cast::castExp(IConstant::COMPLEX, &exp);
     s = exp->toString();

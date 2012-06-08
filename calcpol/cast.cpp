@@ -48,7 +48,7 @@ IConstant** Cast::castCte(IConstant::T_CONSTANT t, IConstant ** pptr_cte, bool c
         case IConstant::ENTIER:
             n = new Entier(*cte);
             break;
-        case IConstant::RATIONNELLE:
+        case IConstant::RATIONNEL:
             n = new Rationnel(*cte);
             break;
         case IConstant::COMPLEX:

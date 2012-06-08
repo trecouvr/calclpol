@@ -30,7 +30,7 @@ Complex::Complex(const IConstant & i) : IConstant(IConstant::COMPLEX) {
         _re = dynamic_cast<const Complex&>(i)._re->copy();
         _im = dynamic_cast<const Complex&>(i)._im->copy();
         break;
-    case IConstant::RATIONNELLE:
+    case IConstant::RATIONNEL:
         _re = new Rationnel(dynamic_cast<const Rationnel&>(i));
         _im = new Rationnel(0);
         break;
