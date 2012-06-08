@@ -57,7 +57,6 @@ HEADERS  += mainwindow.h \
     operateurs/operateurs.h \
     operateurs/ioperateur.h \
     constants/iconstant.h \
-    constants/constants.h \
     cast.h \
     operateurs/operateurcosinus.h \
     operateurs/operateurtangente.h \
@@ -72,7 +71,11 @@ HEADERS  += mainwindow.h \
     operateurs/operateursqr.h \
     operateurs/operateurcube.h \
     operateurs/operateurdiv.h \
-    operateurs/operateurmult.h
+    operateurs/operateurmult.h \
+    constants/complex.h \
+    constants/rationnel.h \
+    constants/basictype.h \
+    constants/constants.h
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \

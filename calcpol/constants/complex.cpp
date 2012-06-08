@@ -1,4 +1,7 @@
-#include "constants.h"
+#include "complex.h"
+#include "basictype.h"
+#include "rationnel.h"
+#include <QStringList>
 
 Complex::Complex(const IConstant* re, const IConstant* im) : IConstant(IConstant::COMPLEX) {
     if (re == 0) {
@@ -107,20 +110,70 @@ Complex& Complex::operator*=(const IConstant& o) {
 }
 
 
-void Complex::fromString(const QString &) {
-    // TODO
+void Complex::fromString(const QString & s) {
+    const QRegExp re_entier = Entier().regexp();
+    const QRegExp re_reel = Reel().regexp();
+    const QRegExp re_rationnel = Rationnel().regexp();
+    QRegExp re = this->regexp();
+    if (re.exactMatch(s)) {
+        QStringList l = re.capturedTexts();
+        QString s_re = l[1];
+        QString s_im = l[4];
+        if (l[3] == "-") {
+            s_im = "-"+s_im;
+        }
+        if (re_entier.exactMatch(s_re)) {
+            delete _re;
+            _re = new Entier();
+            _re->fromString(s_re);
+        }
+        else if (re_reel.exactMatch(s_re)) {
+            delete _re;
+            _re = new Reel();
+            _re->fromString(s_re);
+        }
+        else if (re_rationnel.exactMatch(s_re)) {
+            delete _re;
+            _re = new Rationnel();
+            _re->fromString(s_re);
+        }
+        else {
+            Logger::e("Complex", "fromString, impossible de parser re : '"+s+"'.");
+        }
+        if (re_entier.exactMatch(s_im)) {
+            delete _im;
+            _im = new Entier();
+            _im->fromString(s_im);
+        }
+        else if (re_reel.exactMatch(s_im)) {
+            delete _im;
+            _im = new Reel();
+            _im->fromString(s_im);
+        }
+        else if (re_rationnel.exactMatch(s_im)) {
+            delete _im;
+            _im = new Rationnel();
+            _im->fromString(s_im);
+        }
+        else {
+            Logger::e("Complex", "fromString, impossible de parser re : '"+s+"'.");
+        }
+    }
+    else {
+        Logger::e("Complex", "fromString, impossible de parser '"+s+"'.");
+    }
 }
 
 QString Complex::toString() const {
     if (_re and _im)
-        return _re->toString()+"i"+_im->toString();
+        return _re->toString()+"+"+_im->toString()+"i";
     else
         Logger::e("Complex", "toString, _im or _re null");
         return 0;
 }
 
 QRegExp Complex::regexp() const {
-    return QRegExp("(-?\\d+)(([+-]?\\d+)i)?");
+    return QRegExp("(-?[^+-]+)(([+-])([^i]+)i)?");
 }
 
 Complex* Complex::copy() const {

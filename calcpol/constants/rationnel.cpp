@@ -1,4 +1,7 @@
-#include "constants.h"
+#include "rationnel.h"
+#include "complex.h"
+#include "basictype.h"
+#include <QStringList>
 #define CONST_CONVERSION 10000
 
 Rationnel::Rationnel(long num, long den) : IConstant(IConstant::RATIONNEL), _num(num), _den(den) {}
@@ -31,7 +34,7 @@ Rationnel::Rationnel(const IConstant & i) : IConstant(IConstant::RATIONNEL) {
 
 
 Rationnel::operator long() const { return (long)(_num/_den); }
-Rationnel::operator double() const { return (double)(_num/_den); }
+Rationnel::operator double() const { return (double)((double)_num/(double)_den); }
 
 Rationnel* Rationnel::plus(const IConstant*o) const {
     Rationnel* r = new Rationnel(*this);
@@ -91,16 +94,29 @@ void Rationnel::simplifier() {
 	_num = _den / p;
 }
 
-void Rationnel::fromString(const QString &) {
-    // TODO
+void Rationnel::fromString(const QString & s) {
+    QRegExp re = this->regexp();
+    if (re.exactMatch(s)) {
+        QStringList l = re.capturedTexts();
+        _num = l[1].toInt();
+        if (l[1].isEmpty()) {
+            _den = 1;
+        }
+        else {
+            _den = l[2].toInt();
+        }
+    }
+    else {
+        Logger::e("Rationnel", "fromString, impossible de parser '"+s+"'.");
+    }
 }
 
 QString Rationnel::toString() const {
-    return "("+QString::number(_num)+"/"+QString::number(_den)+")";
+    return QString::number(_num)+"/"+QString::number(_den);
 }
 
 QRegExp Rationnel::regexp() const {
-    return QRegExp("(-?\\d+)(/-?\\d+)?");
+    return QRegExp("(-?\\d+)/(-?\\d+)?");
 }
 
 Rationnel* Rationnel::copy() const {
