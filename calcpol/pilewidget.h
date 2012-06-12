@@ -19,6 +19,7 @@ class PileWidget : public QWidget
 public:
     explicit PileWidget(QWidget *parent = 0);
     ~PileWidget();
+	void refreshScreen();
     void eval();
     void addInput(const QString&);
 	void annuler();
@@ -33,6 +34,9 @@ private:
     Ui::PileWidget *ui;
     Calculator _calculator;
     QStringListModel _listModel;
+	QVector<QString> _save;
+	unsigned int _saveIndex;
+
 };
 
 #endif // PILEWIDGET_H
