@@ -15,9 +15,12 @@ class Calculator
 public:
     typedef std::deque<IExpression*>    Pile;
     typedef Pile::const_iterator    const_iterator;
+	typedef Pile::const_reverse_iterator    const_reverse_iterator;
     Calculator();
     const_iterator begin() const;
     const_iterator end() const;
+	const_reverse_iterator rbegin() const;
+	const_reverse_iterator rend() const;
     /**
       Mettre une expression sur le dessus de la pile (sans l'évaluer).
     */
