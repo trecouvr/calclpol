@@ -107,6 +107,16 @@ public:
     */
     void complex(bool);
     void t_constant(IConstant::T_CONSTANT t);
+    /**
+      Renvoie une string représentant l'état actuel.
+      @return {QString} state
+    */
+    QString stateToString() const;
+    /**
+      Charge l'état passé sous forme de string.
+      @param {QString} state
+    */
+    void stateFromString(const QString&);
 
 protected:
     /**
