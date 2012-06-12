@@ -27,6 +27,7 @@ public:
     long num() const;
     void simplifier();
     QRegExp regexp() const;
+    static long pgcd(long,long);
 
 protected:
     void fromString(const QString &);
