@@ -59,6 +59,7 @@ void MainWindow::loadState() {
         }
         file.close();
         ui->pile_widget->stateFromString(state);
+        ui->pile_widget->refreshScreen();
     }
 }
 
