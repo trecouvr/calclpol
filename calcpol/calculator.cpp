@@ -110,7 +110,9 @@ bool Calculator::evalCmd(const QString &s) {
             re_dup("dup"),
             re_swap("swap(\\d+)_(\\d+)"),
             re_setmode("setmode_(\\w+)"),
-            re_complex("(no)?complexmode");
+            re_complex("(no)?complexmode"),
+            re_drop("drop(-?\\d+)?"),
+            re_clear("clear");
     // moyenne
     if (re_mean.exactMatch(s)) {
         QStringList l = re_mean.capturedTexts();
@@ -169,6 +171,22 @@ bool Calculator::evalCmd(const QString &s) {
         else {
             _complex = true;
         }
+        return true;
+    }
+    // drop
+    else if (re_drop.exactMatch(s)) {
+        QStringList l = re_drop.capturedTexts();
+        if (l[1].isEmpty()) {
+            this->drop(1);
+        }
+        else {
+            this->drop(l[1].toInt());
+        }
+        return true;
+    }
+    // clear
+    else if (re_clear.exactMatch(s)) {
+        this->clear();
         return true;
     }
 
@@ -306,8 +324,8 @@ QString Calculator::stateToString() const {
 void Calculator::stateFromString(const QString & state) {
     this->clear();
 	QStringList list = state.split('\n', QString::SkipEmptyParts);
-    for (QStringList::const_iterator it=list.begin(); it!=list.end(); ++it) {
-        IExpression * exp = _factory.parse(*it);
+    for (int i=list.size()-1; i>=0; --i) {
+        IExpression * exp = _factory.parse(list[i]);
         if (exp!=0) {
             this->push(exp);
         }
