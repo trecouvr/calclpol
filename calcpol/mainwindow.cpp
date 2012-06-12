@@ -1,13 +1,17 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <fstream>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-	Logger::v("MainWindow","constructor called");
+    Logger::v("MainWindow","constructor called");
     ui->setupUi(this);
+
+    this->loadState();
+
    _optionDialog = new OptionDialog(this);
    //connect(ui->pb_eval, SIGNAL(released()), ui->pile_widget, SLOT(on_input_returnPressed()));
    QList<QPushButton*> pList = this->findChildren<QPushButton*>(QRegExp(".*"));
@@ -19,24 +23,43 @@ MainWindow::MainWindow(QWidget *parent) :
    connect(ui->rb_entier, SIGNAL(toggled(bool)), this, SLOT(setEntierMode()));
    connect(ui->rb_reel, SIGNAL(toggled(bool)), this, SLOT(setReelMode()));
    connect(ui->rb_rationnel, SIGNAL(toggled(bool)), this, SLOT(setRationnelMode()));
+
 }
 
-MainWindow::~MainWindow()
-{
-	Logger::v("MainWindow","destructor called");
-	saveState();
+MainWindow::~MainWindow() {
+    Logger::v("MainWindow","destructor called");
+    this->saveState();
     delete ui;
 }
 
-void MainWindow::saveState()
-{
-	Logger::v("MainWindow","saveState");
-
+void MainWindow::saveState() {
+    Logger::v("MainWindow","saveState");
+    QString state = ui->pile_widget->stateToString();
+    std::ofstream file;
+    file.open("save.txt", ios::trunc);
+    if (file.is_open()) {
+        file << state.toStdString();
+        file.close();
+    }
+    else {
+        Logger::e("MainWindow", "impossible d'ouvrir le fichier");
+    }
 }
 
-void MainWindow::loadState()
-{
-	Logger::v("MainWindow","loadState");
+void MainWindow::loadState() {
+    Logger::v("MainWindow","loadState");
+    std::ifstream file;
+    std::string line;
+    QString state = "";
+    file.open ("save.txt");
+    if (file.is_open()) {
+        while ( file.good() ) {
+            getline (file,line);
+            state += (line+"\n").c_str();
+        }
+        file.close();
+        ui->pile_widget->stateFromString(state);
+    }
 }
 
 void MainWindow::on_actionPreferences_triggered()
@@ -73,17 +96,17 @@ void MainWindow::setRationnelMode() {
 
 void MainWindow::on_actionQuitter_triggered()
 {
-	this->close();
+    this->close();
 }
 
 void MainWindow::on_actionRetablir_triggered()
 {
-	Logger::v("MainWindow","ctrl+y triggered");
-	ui->pile_widget->retablir();
+    Logger::v("MainWindow","ctrl+y triggered");
+    ui->pile_widget->retablir();
 }
 
 void MainWindow::on_actionAnnuler_triggered()
 {
-	Logger::v("MainWindow","ctrl+z triggered");
-	ui->pile_widget->annuler();
+    Logger::v("MainWindow","ctrl+z triggered");
+    ui->pile_widget->annuler();
 }
