@@ -305,7 +305,7 @@ QString Calculator::stateToString() const {
 
 void Calculator::stateFromString(const QString & state) {
     this->clear();
-    QStringList list = state.split(' ', QString::SkipEmptyParts);
+	QStringList list = state.split('\n', QString::SkipEmptyParts);
     for (QStringList::const_iterator it=list.begin(); it!=list.end(); ++it) {
         IExpression * exp = _factory.parse(*it);
         if (exp!=0) {
