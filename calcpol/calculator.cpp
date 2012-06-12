@@ -291,3 +291,25 @@ unsigned int Calculator::_limit(int x) const {
 
     return limit;
 }
+
+QString Calculator::stateToString() const {
+    QString state = "";
+    for (Pile::const_iterator it=_pile.begin(); it!= _pile.end(); ++it) {
+        IExpression * exp = *it;
+        state += exp->toString() + "\n";
+    }
+
+    return state;
+}
+
+
+void Calculator::stateFromString(const QString & state) {
+    this->clear();
+    QStringList list = state.split(' ', QString::SkipEmptyParts);
+    for (QStringList::const_iterator it=list.begin(); it!=list.end(); ++it) {
+        IExpression * exp = _factory.parse(*it);
+        if (exp!=0) {
+            this->push(exp);
+        }
+    }
+}
