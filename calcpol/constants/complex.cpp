@@ -173,7 +173,7 @@ QString Complex::toString() const {
 }
 
 QRegExp Complex::regexp() const {
-    return QRegExp("(-?[^+-]+)(([+-])([^i]+)i)?");
+    return QRegExp("(-?[\\d/.]+)(([+-])([\\d/.]+)i)?");
 }
 
 Complex* Complex::copy() const {

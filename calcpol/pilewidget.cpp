@@ -67,3 +67,11 @@ void PileWidget::addInput(const QString& s) {
     QString current = ui->input->text();
     ui->input->setText(ui->input->text()+s);
 }
+
+QString PileWidget::stateToString() const {
+    return _calculator.stateToString();
+}
+
+void PileWidget::stateFromString(const QString & state) {
+    _calculator.stateFromString(state);
+}

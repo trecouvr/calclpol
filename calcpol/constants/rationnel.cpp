@@ -3,6 +3,7 @@
 #include "basictype.h"
 #include <QStringList>
 #define CONST_CONVERSION 10000
+#define abs(x) ((x) > 0 ? (x) : -(x))
 
 Rationnel::Rationnel(long num, long den) : IConstant(IConstant::RATIONNEL), _num(num), _den(den) {}
 
@@ -81,12 +82,11 @@ Rationnel& Rationnel::operator*=(const IConstant& o) {
 	return *this;
 }
 
-long pgcd(long a,long b)
+long Rationnel::pgcd(long a,long b)
 {
 	return b ?  pgcd(b,a%b) : a;
 }
 
-#define abs(x) ((x) > 0 ? (x) : -(x))
 
 void Rationnel::simplifier() {
 	Logger::v("Rationnel","simplifier()");
