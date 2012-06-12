@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+	Logger::v("MainWindow","constructor called");
     ui->setupUi(this);
    _optionDialog = new OptionDialog(this);
    //connect(ui->pb_eval, SIGNAL(released()), ui->pile_widget, SLOT(on_input_returnPressed()));
@@ -22,7 +23,20 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+	Logger::v("MainWindow","destructor called");
+	saveState();
     delete ui;
+}
+
+void MainWindow::saveState()
+{
+	Logger::v("MainWindow","saveState");
+
+}
+
+void MainWindow::loadState()
+{
+	Logger::v("MainWindow","loadState");
 }
 
 void MainWindow::on_actionPreferences_triggered()
@@ -57,3 +71,19 @@ void MainWindow::setRationnelMode() {
     ui->pile_widget->setConstantMode(IConstant::RATIONNEL);
 }
 
+void MainWindow::on_actionQuitter_triggered()
+{
+	this->close();
+}
+
+void MainWindow::on_actionRetablir_triggered()
+{
+	Logger::v("MainWindow","ctrl+y triggered");
+	ui->pile_widget->retablir();
+}
+
+void MainWindow::on_actionAnnuler_triggered()
+{
+	Logger::v("MainWindow","ctrl+z triggered");
+	ui->pile_widget->annuler();
+}

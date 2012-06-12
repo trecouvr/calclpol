@@ -26,6 +26,14 @@ void PileWidget::eval() {
     _listModel.setStringList(list);
 }
 
+void PileWidget::annuler() {
+	Logger::v("PileWidget", "annuler() called");
+}
+
+void PileWidget::retablir() {
+	Logger::v("PileWidget", "retablir() called");
+}
+
 void PileWidget::on_input_returnPressed() {
     eval();
 }

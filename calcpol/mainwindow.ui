@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>672</width>
-    <height>318</height>
+    <width>727</width>
+    <height>374</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -376,8 +376,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>672</width>
-     <height>23</height>
+     <width>727</width>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
@@ -390,7 +390,7 @@
     <property name="title">
      <string>Edition</string>
     </property>
-    <addaction name="actionR_tablir"/>
+    <addaction name="actionRetablir"/>
     <addaction name="actionAnnuler"/>
    </widget>
    <addaction name="menuFichier"/>
@@ -401,15 +401,24 @@
    <property name="text">
     <string>Quitter</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
   </action>
-  <action name="actionR_tablir">
+  <action name="actionRetablir">
    <property name="text">
     <string>Rétablir</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
    </property>
   </action>
   <action name="actionAnnuler">
    <property name="text">
     <string>Annuler</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Z</string>
    </property>
   </action>
   <action name="actionPreferences">

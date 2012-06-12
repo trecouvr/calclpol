@@ -21,6 +21,8 @@ public:
     ~PileWidget();
     void eval();
     void addInput(const QString&);
+	void annuler();
+	void retablir();
 
 public slots:
     void on_input_returnPressed();
