@@ -41,6 +41,10 @@ private slots:
 private:
     Ui::MainWindow *ui;
     OptionDialog *_optionDialog;
+
 };
+
+#define NB_FUNNY_NAMES 50
+extern const char* FUNNY_NAMES[NB_FUNNY_NAMES];
 
 #endif // MAINWINDOW_H

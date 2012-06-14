@@ -3,6 +3,8 @@
 
 #include <fstream>
 
+
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -11,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     ui->tabWidget->clear();
-    ui->tabWidget->addTab(new PileWidget(), "Onglet 0");
+    ui->tabWidget->addTab(new PileWidget(), "First");
     connect(this->currentPile(), SIGNAL(error(QString)), this, SLOT(showError(QString)));
     ui->tabWidget->setMovable(true);
 
@@ -125,7 +127,9 @@ PileWidget* MainWindow::currentPile() const {
 }
 
 void MainWindow::on_actionNouvel_onglet_triggered() {
-    ui->tabWidget->addTab(new PileWidget(), "Onglet "+QString::number(ui->tabWidget->count()));
+    int index = rand() % NB_FUNNY_NAMES;
+    ui->tabWidget->addTab(new PileWidget(), FUNNY_NAMES[index]);
+
     connect(this->currentPile(), SIGNAL(error(QString)), this, SLOT(showError(QString)));
     ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
 }
@@ -133,3 +137,58 @@ void MainWindow::on_actionNouvel_onglet_triggered() {
 void MainWindow::on_actionFerme_l_onglet_triggered() {
     ui->tabWidget->removeTab(ui->tabWidget->currentIndex());
 }
+
+
+const char* FUNNY_NAMES[NB_FUNNY_NAMES] = {
+    "Ball",
+    "Bell",
+    "Booth",
+    "Bubble",
+    "Button",
+    "Curtain",
+    "Hammer",
+    "House",
+    "Bang",
+    "Bent",
+    "Burn",
+    "Dent",
+    "Cancel",
+    "Chase",
+    "Close",
+    "Cook",
+    "Cutlip",
+    "Fry",
+    "Guess",
+    "Hunt",
+    "Keeping",
+    "Loop",
+    "Hook",
+    "Mask",
+    "Penny",
+    "Pant",
+    "Page",
+    "Pill",
+    "Shower",
+    "Shoemaker",
+    "Stone",
+    "Snowball",
+    "Train",
+    "Vigil",
+    "Wall",
+    "Apple",
+    "Berry",
+    "Cherry",
+    "Maples",
+    "Mango",
+    "Milk",
+    "Rose",
+    "Rice",
+    "Flowers",
+    "Wheat",
+    "Black",
+    "Blue",
+    "Gray",
+    "Green",
+    "White"
+};
+
