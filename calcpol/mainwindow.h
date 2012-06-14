@@ -4,6 +4,7 @@
 #include <QMainWindow>
 
 #include "optiondialog.h"
+#include "pilewidget.h"
 
 namespace Ui {
     class MainWindow;
@@ -18,6 +19,7 @@ public:
     ~MainWindow();
     void saveState();
     void loadState();
+    PileWidget* currentPile() const;
 
 public slots:
     void showError(const QString & s);
@@ -31,6 +33,10 @@ private slots:
     void on_actionQuitter_triggered();
     void on_actionRetablir_triggered();
     void on_actionAnnuler_triggered();
+
+    void on_actionNouvel_onglet_triggered();
+
+    void on_actionFerme_l_onglet_triggered();
 
 private:
     Ui::MainWindow *ui;

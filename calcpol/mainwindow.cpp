@@ -10,20 +10,24 @@ MainWindow::MainWindow(QWidget *parent) :
     Logger::v("MainWindow","constructor called");
     ui->setupUi(this);
 
+    ui->tabWidget->clear();
+    ui->tabWidget->addTab(new PileWidget(), "Onglet 0");
+    connect(this->currentPile(), SIGNAL(error(QString)), this, SLOT(showError(QString)));
+    ui->tabWidget->setMovable(true);
+
     this->loadState();
 
    _optionDialog = new OptionDialog(this);
-   //connect(ui->pb_eval, SIGNAL(released()), ui->pile_widget, SLOT(on_input_returnPressed()));
+   //connect(ui->pb_eval, SIGNAL(released()), this->currentPile(), SLOT(on_input_returnPressed()));
    QList<QPushButton*> pList = this->findChildren<QPushButton*>(QRegExp(".*"));
    for (QList<QPushButton*>::iterator it=pList.begin(); it!=pList.end(); ++it) {
        QPushButton * b = *it;
        connect(b, SIGNAL(released()), this, SLOT(on_pb_pressed()));
    }
-   connect(ui->cb_complex, SIGNAL(toggled(bool)), ui->pile_widget, SLOT(setComplexMode(bool)));
+   connect(ui->cb_complex, SIGNAL(toggled(bool)), this->currentPile(), SLOT(setComplexMode(bool)));
    connect(ui->rb_entier, SIGNAL(toggled(bool)), this, SLOT(setEntierMode()));
    connect(ui->rb_reel, SIGNAL(toggled(bool)), this, SLOT(setReelMode()));
    connect(ui->rb_rationnel, SIGNAL(toggled(bool)), this, SLOT(setRationnelMode()));
-   connect(ui->pile_widget, SIGNAL(error(QString)), this, SLOT(showError(QString)));
 }
 
 MainWindow::~MainWindow() {
@@ -34,7 +38,7 @@ MainWindow::~MainWindow() {
 
 void MainWindow::saveState() {
     Logger::v("MainWindow","saveState");
-    QString state = ui->pile_widget->stateToString();
+    QString state = this->currentPile()->stateToString();
     std::ofstream file;
     file.open("save.txt", ios::trunc);
     if (file.is_open()) {
@@ -58,8 +62,8 @@ void MainWindow::loadState() {
             state += (line+"\n").c_str();
         }
         file.close();
-        ui->pile_widget->stateFromString(state);
-        ui->pile_widget->refreshScreen();
+        this->currentPile()->stateFromString(state);
+        this->currentPile()->refreshScreen();
     }
 }
 
@@ -73,26 +77,26 @@ void MainWindow::on_pb_pressed() {
     QPushButton * emetteur = (QPushButton*) sender();
     QString value = emetteur->text();
     if (value == "eval") {
-        ui->pile_widget->on_input_returnPressed();
+        this->currentPile()->on_input_returnPressed();
     }
     else if (value == "space") {
-        ui->pile_widget->addInput(" ");
+        this->currentPile()->addInput(" ");
     }
     else {
-        ui->pile_widget->addInput(value);
+        this->currentPile()->addInput(value);
     }
 }
 
 void MainWindow::setEntierMode() {
-    ui->pile_widget->setConstantMode(IConstant::ENTIER);
+    this->currentPile()->setConstantMode(IConstant::ENTIER);
 }
 
 void MainWindow::setReelMode() {
-    ui->pile_widget->setConstantMode(IConstant::REEL);
+    this->currentPile()->setConstantMode(IConstant::REEL);
 }
 
 void MainWindow::setRationnelMode() {
-    ui->pile_widget->setConstantMode(IConstant::RATIONNEL);
+    this->currentPile()->setConstantMode(IConstant::RATIONNEL);
 }
 
 void MainWindow::on_actionQuitter_triggered()
@@ -103,15 +107,29 @@ void MainWindow::on_actionQuitter_triggered()
 void MainWindow::on_actionRetablir_triggered()
 {
     Logger::v("MainWindow","ctrl+y triggered");
-    ui->pile_widget->retablir();
+    this->currentPile()->retablir();
 }
 
 void MainWindow::on_actionAnnuler_triggered()
 {
     Logger::v("MainWindow","ctrl+z triggered");
-    ui->pile_widget->annuler();
+    this->currentPile()->annuler();
 }
 
 void MainWindow::showError(const QString & s) {
     this->statusBar()->showMessage(s, 2000);
+}
+
+PileWidget* MainWindow::currentPile() const {
+    return (PileWidget*) ui->tabWidget->currentWidget();
+}
+
+void MainWindow::on_actionNouvel_onglet_triggered() {
+    ui->tabWidget->addTab(new PileWidget(), "Onglet "+QString::number(ui->tabWidget->count()));
+    connect(this->currentPile(), SIGNAL(error(QString)), this, SLOT(showError(QString)));
+    ui->tabWidget->setCurrentIndex(ui->tabWidget->count()-1);
+}
+
+void MainWindow::on_actionFerme_l_onglet_triggered() {
+    ui->tabWidget->removeTab(ui->tabWidget->currentIndex());
 }

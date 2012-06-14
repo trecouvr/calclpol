@@ -213,7 +213,7 @@ void Calculator::eval(const QString &s) {
             if (!this->evalCmd(*it)) {
                 // bah c'est rien de connu !
                 Logger::w("Calculator", "eval, l'input n'a pas pu être parsé, input="+*it);
-                throw std::logic_error("l'input n'a pas pu être parsé en entier");
+                throw std::logic_error("Je n'ai pas compris :)");
             }
         }
         else {
@@ -324,7 +324,7 @@ QString Calculator::stateToString() const {
 
 void Calculator::stateFromString(const QString & state) {
     this->clear();
-	QStringList list = state.split('\n', QString::SkipEmptyParts);
+    QStringList list = state.split('\n', QString::SkipEmptyParts);
     for (int i=list.size()-1; i>=0; --i) {
         IExpression * exp = _factory.parse(list[i]);
         if (exp!=0) {
