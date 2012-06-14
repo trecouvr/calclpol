@@ -9,6 +9,7 @@ class IOperateur : public IExpression
 {
 public:
     IOperateur(int u, bool allow_entier, bool allow_reel, bool allow_rationnel, bool allow_complex);
+    virtual ~IOperateur();
     unsigned int unarite() const;
     /**
       Application de l'opérateur aux IConstant*, test que le mode en cours est valide, puis

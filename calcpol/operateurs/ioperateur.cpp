@@ -10,6 +10,8 @@ IOperateur::IOperateur(int u, bool allow_entier, bool allow_reel, bool allow_rat
     _allowed_datas[IConstant::COMPLEX]        = allow_complex;
 }
 
+IOperateur::~IOperateur() {}
+
 unsigned int IOperateur::unarite() const {
     return _unarite;
 }
