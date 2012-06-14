@@ -205,6 +205,7 @@ void Calculator::eval(const QString &s) {
             if (!this->evalCmd(*it)) {
                 // bah c'est rien de connu !
                 Logger::w("Calculator", "eval, l'input n'a pas pu être parsé, input="+*it);
+                throw std::logic_error("l'input n'a pas pu être parsé en entier");
             }
         }
         else {
@@ -234,15 +235,7 @@ QVector<IConstant*> Calculator::getCtes(int x, bool make_pop) {
 
     for (unsigned int i=0; i<limit; ++i) {
         IExpression * exp = _pile[i]->copy();
-        try {
-            arg = *(this->castExpToCte(&exp));
-        }
-        catch (std::exception& e) {
-            for (QVector<IConstant*>::iterator it=args.begin(); it!=args.end(); ++it) {
-                delete (*it);
-            }
-            throw e;
-        }
+        arg = *(this->castExpToCte(&exp));
         args.push_back(arg);
     }
 
@@ -256,7 +249,7 @@ QVector<IConstant*> Calculator::getCtes(int x, bool make_pop) {
 void Calculator::applyOperator(const IOperateur * op) {
     // récupération des arguments sur la pile
     if (op->unarite() > _pile.size()) {
-        throw 42;
+        throw logic_error("La pile ne contient pas assez d'éléments");
     }
     // récupérer les X première valeurs sans les supprimer de la pile
     QVector<IConstant*> args = this->getCtes(op->unarite(), false);

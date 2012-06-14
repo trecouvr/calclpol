@@ -26,14 +26,19 @@ void PileWidget::refreshScreen() {
 
 void PileWidget::eval() {
     QString input = ui->input->text();
-    _calculator.eval(input);
-    ui->input->clear();
+    try {
+        _calculator.eval(input);
+        ui->input->clear();
 	refreshScreen();
 	// Gestion de la pile pour avancer/reculer (ctrl+Z, ctrl+y)
 	while(_saveIndex != _save.size())
 		_save.pop_back();
 	_save.push_back(_calculator.stateToString());
 	_saveIndex++;
+    }
+    catch (exception &ex) {
+        emit error(QString(ex.what()));
+    }
 }
 
 void PileWidget::annuler() {

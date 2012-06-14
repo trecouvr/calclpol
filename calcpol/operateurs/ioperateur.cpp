@@ -16,7 +16,7 @@ unsigned int IOperateur::unarite() const {
 
 IConstant* IOperateur::exec(unsigned int mode, const QVector<IConstant*>& args) const {
     if (mode > 3 or !_allowed_datas[mode]) {
-        throw 42;
+        throw std::logic_error("L'operateur ne supporte pas ce type de données");
     }
     return this->exec(args);
 }

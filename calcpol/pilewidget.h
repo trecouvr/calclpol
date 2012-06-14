@@ -19,13 +19,16 @@ class PileWidget : public QWidget
 public:
     explicit PileWidget(QWidget *parent = 0);
     ~PileWidget();
-	void refreshScreen();
+    void refreshScreen();
     void eval();
     void addInput(const QString&);
     void annuler();
     void retablir();
     QString stateToString() const;
     void stateFromString(const QString&);
+
+signals:
+    void error(QString);
 
 public slots:
     void on_input_returnPressed();

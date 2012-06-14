@@ -23,7 +23,7 @@ MainWindow::MainWindow(QWidget *parent) :
    connect(ui->rb_entier, SIGNAL(toggled(bool)), this, SLOT(setEntierMode()));
    connect(ui->rb_reel, SIGNAL(toggled(bool)), this, SLOT(setReelMode()));
    connect(ui->rb_rationnel, SIGNAL(toggled(bool)), this, SLOT(setRationnelMode()));
-
+   connect(ui->pile_widget, SIGNAL(error(QString)), this, SLOT(showError(QString)));
 }
 
 MainWindow::~MainWindow() {
@@ -110,4 +110,8 @@ void MainWindow::on_actionAnnuler_triggered()
 {
     Logger::v("MainWindow","ctrl+z triggered");
     ui->pile_widget->annuler();
+}
+
+void MainWindow::showError(const QString & s) {
+    this->statusBar()->showMessage(s, 2000);
 }

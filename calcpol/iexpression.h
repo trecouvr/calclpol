@@ -5,6 +5,7 @@
 #include <QRegExp>
 
 #include <exception>
+#include <stdexcept>
 
 /**
   Class générique représentant une donnée de la pile
