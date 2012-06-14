@@ -103,6 +103,14 @@ Calculator::const_iterator Calculator::end() const {
     return _pile.end();
 }
 
+Calculator::const_reverse_iterator Calculator::rbegin() const {
+	return _pile.rbegin();
+}
+
+Calculator::const_reverse_iterator Calculator::rend() const {
+	return _pile.rend();
+}
+
 bool Calculator::evalCmd(const QString &s) {
     const QRegExp
             re_mean("mean(-?\\d+)?"),

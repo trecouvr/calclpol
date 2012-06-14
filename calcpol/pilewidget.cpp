@@ -18,7 +18,7 @@ PileWidget::~PileWidget()
 
 void PileWidget::refreshScreen() {
 	QStringList list;
-	for (Calculator::const_iterator it=_calculator.begin(); it!=_calculator.end(); ++it) {
+	for (Calculator::const_reverse_iterator it=_calculator.rbegin(); it!=_calculator.rend(); ++it) {
 		list << (*it)->toString();
 	}
 	_listModel.setStringList(list);
