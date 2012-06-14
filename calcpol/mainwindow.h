@@ -30,10 +30,9 @@ private slots:
     void on_actionQuitter_triggered();
     void on_actionRetablir_triggered();
     void on_actionAnnuler_triggered();
-
     void on_actionNouvel_onglet_triggered();
-
     void on_actionFerme_l_onglet_triggered();
+    void hide_show_keyboard();
 
 private:
     Ui::MainWindow *ui;

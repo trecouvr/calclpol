@@ -26,6 +26,7 @@ MainWindow::MainWindow(QWidget *parent) :
        QPushButton * b = *it;
        connect(b, SIGNAL(released()), this, SLOT(on_pb_pressed()));
    }
+   connect(ui->button_hide_show_keyboard, SIGNAL(clicked()), this, SLOT(hide_show_keyboard()));
 }
 
 MainWindow::~MainWindow() {
@@ -120,6 +121,18 @@ void MainWindow::on_actionNouvel_onglet_triggered() {
 
 void MainWindow::on_actionFerme_l_onglet_triggered() {
     ui->tabWidget->removeTab(ui->tabWidget->currentIndex());
+}
+
+void MainWindow::hide_show_keyboard() {
+    if (ui->keyboard->isHidden ()) {
+        ui->keyboard->show();
+        ui->button_hide_show_keyboard->setText(">>");
+
+    }
+    else {
+        ui->keyboard->hide();
+        ui->button_hide_show_keyboard->setText("<<");
+    }
 }
 
 
