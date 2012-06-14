@@ -26,6 +26,7 @@ public:
     void retablir();
     QString stateToString() const;
     void stateFromString(const QString&);
+    void setConstantMode(IConstant::T_CONSTANT t);
 
 signals:
     void error(QString);
@@ -33,14 +34,16 @@ signals:
 public slots:
     void on_input_returnPressed();
     void setComplexMode(bool);
-    void setConstantMode(IConstant::T_CONSTANT t);
+    void onChooseEntier();
+    void onChooseReel();
+    void onChooseRationnel();
 
 private:
     Ui::PileWidget *ui;
     Calculator _calculator;
     QStringListModel _listModel;
-	QVector<QString> _save;
-	unsigned int _saveIndex;
+    QVector<QString> _save;
+    unsigned int _saveIndex;
 
 };
 

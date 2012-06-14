@@ -9,7 +9,16 @@ PileWidget::PileWidget(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->listView->setModel(&_listModel);
+
+    connect(ui->cb_complex, SIGNAL(toggled(bool)), this, SLOT(setComplexMode(bool)));
+    connect(ui->rb_entier, SIGNAL(clicked()), this, SLOT(onChooseEntier()));
+    connect(ui->rb_reel, SIGNAL(clicked()), this, SLOT(onChooseReel()));
+    connect(ui->rb_rationnel, SIGNAL(clicked()), this, SLOT(onChooseRationnel()));
 }
+
+void PileWidget::onChooseEntier() { this->setConstantMode(IConstant::ENTIER); }
+void PileWidget::onChooseReel() { this->setConstantMode(IConstant::REEL); }
+void PileWidget::onChooseRationnel() { this->setConstantMode(IConstant::RATIONNEL); }
 
 PileWidget::~PileWidget()
 {
@@ -80,3 +89,18 @@ QString PileWidget::stateToString() const {
 void PileWidget::stateFromString(const QString & state) {
     _calculator.stateFromString(state);
 }
+
+
+/*
+void MainWindow::setEntierMode() {
+    this->currentPile()->setConstantMode(IConstant::ENTIER);
+}
+
+void MainWindow::setReelMode() {
+    this->currentPile()->setConstantMode(IConstant::REEL);
+}
+
+void MainWindow::setRationnelMode() {
+    this->currentPile()->setConstantMode(IConstant::RATIONNEL);
+}
+*/

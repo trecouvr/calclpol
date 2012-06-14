@@ -27,9 +27,6 @@ public slots:
 private slots:
     void on_actionPreferences_triggered();
     void on_pb_pressed();
-    void setEntierMode();
-    void setReelMode();
-    void setRationnelMode();
     void on_actionQuitter_triggered();
     void on_actionRetablir_triggered();
     void on_actionAnnuler_triggered();

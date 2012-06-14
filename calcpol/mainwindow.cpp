@@ -26,10 +26,6 @@ MainWindow::MainWindow(QWidget *parent) :
        QPushButton * b = *it;
        connect(b, SIGNAL(released()), this, SLOT(on_pb_pressed()));
    }
-   connect(ui->cb_complex, SIGNAL(toggled(bool)), this->currentPile(), SLOT(setComplexMode(bool)));
-   connect(ui->rb_entier, SIGNAL(toggled(bool)), this, SLOT(setEntierMode()));
-   connect(ui->rb_reel, SIGNAL(toggled(bool)), this, SLOT(setReelMode()));
-   connect(ui->rb_rationnel, SIGNAL(toggled(bool)), this, SLOT(setRationnelMode()));
 }
 
 MainWindow::~MainWindow() {
@@ -87,18 +83,6 @@ void MainWindow::on_pb_pressed() {
     else {
         this->currentPile()->addInput(value);
     }
-}
-
-void MainWindow::setEntierMode() {
-    this->currentPile()->setConstantMode(IConstant::ENTIER);
-}
-
-void MainWindow::setReelMode() {
-    this->currentPile()->setConstantMode(IConstant::REEL);
-}
-
-void MainWindow::setRationnelMode() {
-    this->currentPile()->setConstantMode(IConstant::RATIONNEL);
 }
 
 void MainWindow::on_actionQuitter_triggered()
