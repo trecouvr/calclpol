@@ -126,12 +126,11 @@ void MainWindow::on_actionFerme_l_onglet_triggered() {
 void MainWindow::hide_show_keyboard() {
     if (ui->keyboard->isHidden ()) {
         ui->keyboard->show();
-        ui->button_hide_show_keyboard->setText(">>");
-
+        ui->button_hide_show_keyboard->setText("<<");
     }
     else {
         ui->keyboard->hide();
-        ui->button_hide_show_keyboard->setText("<<");
+        ui->button_hide_show_keyboard->setText(">>");
     }
 }
 
