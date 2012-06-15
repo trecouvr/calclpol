@@ -1,5 +1,5 @@
 #include "operateurinv.h"
-
+#include "logger.h"
 
 OperateurInv::OperateurInv() : IOperateur(1,true,true,true,false) {
 }
