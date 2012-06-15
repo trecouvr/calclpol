@@ -4,7 +4,7 @@
 
 #include <QStringList>
 
-Calculator::Calculator() : _t_constant(IConstant::REEL), _complex(false) {
+Calculator::Calculator() : _t_constant(IConstant::REEL), _complex(false), _radian(true) {
     Logger::i("Calculator","Constructeur");
 }
 
@@ -261,8 +261,14 @@ void Calculator::applyOperator(const IOperateur * op) {
     }
     // récupérer les X première valeurs sans les supprimer de la pile
     QVector<IConstant*> args = this->getCtes(op->unarite(), false);
-    // application de l'opérateur TODO remplacer le 0 par _t_constant & _complex
-    IConstant * result = op->exec(0,args);
+    IConstant::T_CONSTANT t;
+    if (_complex) {
+        t = IConstant::COMPLEX;
+    }
+    else {
+        t = _t_constant;
+    }
+    IConstant * result = op->exec(t,args);
     // si on a eu aucune erreur, on peut supprimer les arguments de la
     // pile et empiler le résultat
     this->drop(op->unarite());
