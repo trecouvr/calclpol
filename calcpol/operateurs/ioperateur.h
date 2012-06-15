@@ -8,7 +8,7 @@
 class IOperateur : public IExpression
 {
 public:
-    IOperateur(int u, bool allow_entier, bool allow_reel, bool allow_rationnel, bool allow_complex);
+    IOperateur(int u, bool allow_entier, bool allow_reel, bool allow_rationnel, bool allow_complex, bool is_angular_dependent=false);
     virtual ~IOperateur();
     unsigned int unarite() const;
     /**
@@ -30,6 +30,7 @@ protected:
     unsigned int _unarite;
     void fromString(const QString &);
     QVector<bool> _allowed_datas;
+    bool _angular_dependant;
 };
 
 #endif // IOPERATEUR_H

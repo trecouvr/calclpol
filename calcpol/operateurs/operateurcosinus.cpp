@@ -1,12 +1,12 @@
 #include "operateurcosinus.h"
 
 
-OperateurCosinus::OperateurCosinus() : IOperateur(1,true,true,true,false) {
+OperateurCosinus::OperateurCosinus() : IOperateur(1,true,true,true,false,true) {
 }
 
 IConstant* OperateurCosinus::exec(const QVector<IConstant*>& args) const {
     double v = (double) *args[0];
-    double r = sin(v);
+    double r = cos(v);
     return args[0]->copy(r);
 }
 

@@ -1,9 +1,11 @@
 #include "ioperateur.h"
 
 
-IOperateur::IOperateur(int u, bool allow_entier, bool allow_reel, bool allow_rationnel, bool allow_complex) :
+IOperateur::IOperateur(int u, bool allow_entier, bool allow_reel, bool allow_rationnel, bool allow_complex, bool is_angular_dependent) :
     IExpression(IExpression::OPERATOR),
-    _unarite(u), _allowed_datas(QVector<bool>(4)) {
+    _unarite(u), _allowed_datas(QVector<bool>(4)),
+    _angular_dependant(is_angular_dependent)
+{
     _allowed_datas[IConstant::ENTIER]         = allow_entier;
     _allowed_datas[IConstant::REEL]           = allow_reel;
     _allowed_datas[IConstant::RATIONNEL]    = allow_rationnel;

@@ -14,11 +14,15 @@ PileWidget::PileWidget(QWidget *parent) :
     connect(ui->rb_entier, SIGNAL(clicked()), this, SLOT(onChooseEntier()));
     connect(ui->rb_reel, SIGNAL(clicked()), this, SLOT(onChooseReel()));
     connect(ui->rb_rationnel, SIGNAL(clicked()), this, SLOT(onChooseRationnel()));
+    connect(ui->rb_radian, SIGNAL(clicked()), this, SLOT(onChooseRadians()));
+    connect(ui->rb_degres, SIGNAL(clicked()), this, SLOT(onChooseDegres()));
 }
 
 void PileWidget::onChooseEntier() { this->setConstantMode(IConstant::ENTIER); }
 void PileWidget::onChooseReel() { this->setConstantMode(IConstant::REEL); }
 void PileWidget::onChooseRationnel() { this->setConstantMode(IConstant::RATIONNEL); }
+void PileWidget::onChooseRadians() { this->setDegres(false); }
+void PileWidget::onChooseDegres() { this->setDegres(true); }
 
 PileWidget::~PileWidget()
 {
@@ -76,6 +80,7 @@ void PileWidget::on_input_returnPressed() {
 
 void PileWidget::setComplexMode(bool b) {_calculator.complex(b); }
 void PileWidget::setConstantMode(IConstant::T_CONSTANT t) {_calculator.t_constant(t);}
+void PileWidget::setDegres(bool t) {_calculator.degres(t);}
 
 void PileWidget::addInput(const QString& s) {
     QString current = ui->input->text();

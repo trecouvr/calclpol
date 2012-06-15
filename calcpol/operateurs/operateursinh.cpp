@@ -1,7 +1,7 @@
 #include "operateursinh.h"
 
 
-OperateurSinh::OperateurSinh() : IOperateur(1,true,true,true,false) {
+OperateurSinh::OperateurSinh() : IOperateur(1,true,true,true,false,true) {
 }
 
 IConstant* OperateurSinh::exec(const QVector<IConstant*>& args) const {

@@ -4,7 +4,7 @@
 
 #include <QStringList>
 
-Calculator::Calculator() : _t_constant(IConstant::REEL), _complex(false), _radian(true) {
+Calculator::Calculator() : _t_constant(IConstant::REEL), _complex(false), _degres(false) {
     Logger::i("Calculator","Constructeur");
 }
 
@@ -236,7 +236,7 @@ void Calculator::eval(const QString &s) {
     }
 }
 
-QVector<IConstant*> Calculator::getCtes(int x, bool make_pop) {
+QVector<IConstant*> Calculator::getCtes(int x, bool make_pop, bool degres_to_radians) {
     QVector<IConstant*> args;
     IConstant * arg;
     unsigned int limit = this->_limit(x);
@@ -244,6 +244,9 @@ QVector<IConstant*> Calculator::getCtes(int x, bool make_pop) {
     for (unsigned int i=0; i<limit; ++i) {
         IExpression * exp = _pile[i]->copy();
         arg = *(this->castExpToCte(&exp));
+        if (degres_to_radians) {
+            arg->toRadians();
+        }
         args.push_back(arg);
     }
 
@@ -260,7 +263,7 @@ void Calculator::applyOperator(const IOperateur * op) {
         throw logic_error("La pile ne contient pas assez d'éléments");
     }
     // récupérer les X première valeurs sans les supprimer de la pile
-    QVector<IConstant*> args = this->getCtes(op->unarite(), false);
+    QVector<IConstant*> args = this->getCtes(op->unarite(), false, _degres);
     IConstant::T_CONSTANT t;
     if (_complex) {
         t = IConstant::COMPLEX;
@@ -303,6 +306,7 @@ void Calculator::castPile(IConstant::T_CONSTANT t, int limit) {
 
 void Calculator::complex(bool b) {_complex = b;}
 void Calculator::t_constant(IConstant::T_CONSTANT t) {_t_constant = t;}
+void Calculator::degres(bool t) { _degres=t; }
 
 unsigned int Calculator::_limit(int x) const {
     unsigned int limit=0;

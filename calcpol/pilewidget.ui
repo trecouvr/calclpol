@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>486</width>
+    <width>488</width>
     <height>299</height>
    </rect>
   </property>
@@ -81,7 +81,7 @@
          <string>Degrés</string>
         </property>
         <property name="checked">
-         <bool>true</bool>
+         <bool>false</bool>
         </property>
        </widget>
       </item>
@@ -89,6 +89,9 @@
        <widget class="QRadioButton" name="rb_radian">
         <property name="text">
          <string>Radian</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
         </property>
        </widget>
       </item>

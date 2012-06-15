@@ -1,7 +1,7 @@
 #include "operateurtanh.h"
 
 
-OperateurTanh::OperateurTanh() : IOperateur(1,true,true,true,false) {
+OperateurTanh::OperateurTanh() : IOperateur(1,true,true,true,false,true) {
 }
 
 IConstant* OperateurTanh::exec(const QVector<IConstant*>& args) const {

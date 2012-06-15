@@ -35,6 +35,9 @@ public:
     */
     virtual IConstant* copy(double) const = 0;
 
+    void toDegres();
+    void toRadians();
+
 protected:
     T_CONSTANT _t_constant;
 };

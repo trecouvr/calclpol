@@ -68,7 +68,7 @@ public:
       @param {int} x -1 pout toute la pile
       @param {bool} make_pop supprime les élément de la pile si tout le cast s'est bien passé
     */
-    QVector<IConstant*> getCtes(int x=-1, bool make_pop=false);
+    QVector<IConstant*> getCtes(int x=-1, bool make_pop=false, bool _degres=false);
     /**
       Evaluer une expression et faire les opérations necessaires sur la pile.
       @param {const QString&} expression
@@ -121,7 +121,7 @@ public:
     */
     void stateFromString(const QString&);
 
-    void radian(bool);
+    void degres(bool);
 
 protected:
     /**
@@ -134,7 +134,7 @@ protected:
     ExpressionFactory _factory;
     IConstant::T_CONSTANT _t_constant;
     bool _complex;
-    bool _radian;
+    bool _degres;
 };
 
 #endif // CALCULATOR_H

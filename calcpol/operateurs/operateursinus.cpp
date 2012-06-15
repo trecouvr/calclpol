@@ -1,7 +1,7 @@
 #include "operateursinus.h"
 
 
-OperateurSinus::OperateurSinus() : IOperateur(1,true,true,true,false) {
+OperateurSinus::OperateurSinus() : IOperateur(1,true,true,true,false,true) {
 }
 
 IConstant* OperateurSinus::exec(const QVector<IConstant*>& args) const {

@@ -27,6 +27,7 @@ public:
     QString stateToString() const;
     void stateFromString(const QString&);
     void setConstantMode(IConstant::T_CONSTANT t);
+    void setDegres(bool);
 
 signals:
     void error(QString);
@@ -37,6 +38,8 @@ public slots:
     void onChooseEntier();
     void onChooseReel();
     void onChooseRationnel();
+    void onChooseDegres();
+    void onChooseRadians();
 
 private:
     Ui::PileWidget *ui;

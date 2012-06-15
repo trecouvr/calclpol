@@ -2,7 +2,7 @@
 
 
 
-OperateurTangente::OperateurTangente() : IOperateur(1,true,true,true,false) {
+OperateurTangente::OperateurTangente() : IOperateur(1,true,true,true,false,true) {
 }
 
 IConstant* OperateurTangente::exec(const QVector<IConstant*>& args) const {

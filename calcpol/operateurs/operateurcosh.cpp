@@ -1,7 +1,7 @@
 #include "operateurcosh.h"
 
 
-OperateurCosh::OperateurCosh() : IOperateur(1,true,true,true,false) {
+OperateurCosh::OperateurCosh() : IOperateur(1,true,true,true,false,true) {
 }
 
 IConstant* OperateurCosh::exec(const QVector<IConstant*>& args) const {

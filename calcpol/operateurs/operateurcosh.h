@@ -6,10 +6,10 @@
 class OperateurCosh : public IOperateur
 {
 public:
-	OperateurCosh();
+    OperateurCosh();
     QString toString() const;
     QRegExp regexp() const;
-	OperateurCosh* copy() const;
+    OperateurCosh* copy() const;
 protected:
     IConstant* exec(const QVector<IConstant*>&) const;
 };
