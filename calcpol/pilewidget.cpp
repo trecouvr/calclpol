@@ -35,6 +35,7 @@ void PileWidget::refreshScreen() {
 		list << (*it)->toString();
 	}
 	_listModel.setStringList(list);
+	ui->listView->scrollToBottom();
 }
 
 void PileWidget::eval() {
@@ -92,7 +93,7 @@ QString PileWidget::stateToString() const {
 }
 
 void PileWidget::stateFromString(const QString & state) {
-    _calculator.stateFromString(state);
+	_calculator.stateFromString(state);
 }
 
 
