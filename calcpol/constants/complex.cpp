@@ -166,7 +166,10 @@ void Complex::fromString(const QString & s) {
 
 QString Complex::toString() const {
     if (_re and _im)
-        return _re->toString()+"+"+_im->toString()+"i";
+		if((double)*_im < 0)
+			return _re->toString()+"-"+_im->toString().remove(0,1)+"i";
+		else
+			return _re->toString()+"+"+_im->toString()+"i";
     else
         Logger::e("Complex", "toString, _im or _re null");
         return 0;
