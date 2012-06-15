@@ -15,7 +15,7 @@ QString OperateurDiv::toString() const {
 }
 
 QRegExp OperateurDiv::regexp() const {
-	return QRegExp("^\\/$");
+	return QRegExp("^/$");
 }
 
 OperateurDiv* OperateurDiv::copy() const {

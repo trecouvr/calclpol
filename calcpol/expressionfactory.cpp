@@ -5,11 +5,11 @@ ExpressionFactory::ExpressionFactory() {
     _expressions.push_back(new Entier());
     _expressions.push_back(new Reel());
     _expressions.push_back(new Rationnel());
+	_expressions.push_back(new OperateurDiv());
     _expressions.push_back(new Complex());
     _expressions.push_back(new OperateurMinus());
     _expressions.push_back(new OperateurPlus());
-    _expressions.push_back(new OperateurMult());
-    _expressions.push_back(new OperateurDiv());
+	_expressions.push_back(new OperateurMult());
     _expressions.push_back(new OperateurSinus());
     _expressions.push_back(new OperateurCosinus());
     _expressions.push_back(new OperateurTangente());
