@@ -116,7 +116,7 @@
          <item row="9" column="1">
           <widget class="QPushButton" name="pb_qrt">
            <property name="text">
-            <string> qrt </string>
+            <string>sqr</string>
            </property>
           </widget>
          </item>
@@ -268,7 +268,7 @@
          <item row="6" column="2">
           <widget class="QPushButton" name="pb_fact">
            <property name="text">
-            <string> fact </string>
+            <string>!</string>
            </property>
           </widget>
          </item>
@@ -358,7 +358,7 @@
      <x>0</x>
      <y>0</y>
      <width>573</width>
-     <height>23</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">

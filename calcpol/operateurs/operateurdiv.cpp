@@ -4,7 +4,9 @@ OperateurDiv::OperateurDiv() : IOperateur(2,true,true,true,true) {
 }
 
 IConstant* OperateurDiv::exec(const QVector<IConstant*>& args) const {
-    IConstant * r = args[0]->copy();
+	if((double) *args[1] == 0)
+		throw std::logic_error("On divise pas par 0 !");
+	IConstant * r = args[0]->copy();
 	*r /= *args[1];
     return r;
 }

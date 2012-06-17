@@ -79,5 +79,4 @@ HEADERS  += mainwindow.h \
 
 FORMS    += mainwindow.ui \
     pilewidget.ui \
-    clavierwidget.ui \
     optiondialog.ui
