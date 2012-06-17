@@ -78,5 +78,4 @@ HEADERS  += mainwindow.h \
     constants/constants.h
 
 FORMS    += mainwindow.ui \
-    pilewidget.ui \
-    clavierwidget.ui
+    pilewidget.ui
