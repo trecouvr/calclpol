@@ -13,7 +13,6 @@ TEMPLATE = app
 SOURCES += main.cpp\
     mainwindow.cpp \
     pilewidget.cpp \
-    clavierwidget.cpp \
     iexpression.cpp \
     logger.cpp \
     calculator.cpp \
@@ -43,7 +42,6 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     pilewidget.h \
-    clavierwidget.h \
     iexpression.h \
     logger.h \
     calculator.h \
