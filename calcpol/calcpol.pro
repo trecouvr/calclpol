@@ -14,7 +14,6 @@ SOURCES += main.cpp\
     mainwindow.cpp \
     pilewidget.cpp \
     clavierwidget.cpp \
-    optiondialog.cpp \
     iexpression.cpp \
     logger.cpp \
     calculator.cpp \
@@ -45,7 +44,6 @@ SOURCES += main.cpp\
 HEADERS  += mainwindow.h \
     pilewidget.h \
     clavierwidget.h \
-    optiondialog.h \
     iexpression.h \
     logger.h \
     calculator.h \

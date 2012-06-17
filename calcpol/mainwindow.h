@@ -3,7 +3,6 @@
 
 #include <QMainWindow>
 
-#include "optiondialog.h"
 #include "pilewidget.h"
 
 namespace Ui {
@@ -35,7 +34,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    OptionDialog *_optionDialog;
 
 };
 
