@@ -19,7 +19,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     this->loadState();
 
-   _optionDialog = new OptionDialog(this);
    //connect(ui->pb_eval, SIGNAL(released()), this->currentPile(), SLOT(on_input_returnPressed()));
    QList<QPushButton*> pList = this->findChildren<QPushButton*>(QRegExp(".*"));
    for (QList<QPushButton*>::iterator it=pList.begin(); it!=pList.end(); ++it) {
@@ -64,12 +63,6 @@ void MainWindow::loadState() {
         this->currentPile()->stateFromString(state);
         this->currentPile()->refreshScreen();
     }
-}
-
-void MainWindow::on_actionPreferences_triggered()
-{
-    _optionDialog->setModal(true);
-    _optionDialog->show();
 }
 
 void MainWindow::on_pb_pressed() {

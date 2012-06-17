@@ -25,7 +25,6 @@ public slots:
     void showError(const QString & s);
 
 private slots:
-    void on_actionPreferences_triggered();
     void on_pb_pressed();
     void on_actionQuitter_triggered();
     void on_actionRetablir_triggered();
