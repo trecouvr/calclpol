@@ -260,7 +260,8 @@ QVector<IConstant*> Calculator::getCtes(int x, bool make_pop, bool degres_to_rad
 void Calculator::applyOperator(const IOperateur * op) {
     // récupération des arguments sur la pile
     if (op->unarite() > _pile.size()) {
-        throw logic_error("La pile ne contient pas assez d'éléments");
+        Logger::e("Calculator", "La pile est trop petite");
+        throw logic_error("La pile est trop petite");
     }
     // récupérer les X première valeurs sans les supprimer de la pile
     QVector<IConstant*> args = this->getCtes(op->unarite(), false, _degres);
