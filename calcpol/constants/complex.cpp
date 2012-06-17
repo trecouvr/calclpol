@@ -98,14 +98,17 @@ Complex& Complex::operator/=(int x) {
 
 Complex& Complex::operator*=(const IConstant& o) {
 	const Complex& p = dynamic_cast<const Complex&>(o);
-	double re = (((double) *(_re) * (double) *(p)._re) - ((double) *(_im) * (double) *(p)._im));
-	double im = (((double) *(_re) * (double) *(p)._im) + ((double) *(_im) * (double) *(p)._re));
-	IConstant * retmp = _re->copy(re);
-	IConstant * imtmp = _im->copy(im);
-	delete _re;
-	delete _im;
-	_re = retmp;
-	_im = imtmp;
+        IConstant * re2 = _re->copy(); *re2 *= *(p._re);
+        IConstant * im2 = _im->copy(); *im2 *= *(p._im);
+        IConstant * reim = _re->copy(); *reim *= *(p._im);
+        IConstant * imre = _im->copy(); *imre *= *(p._re);
+        delete _re;
+        delete _im;
+        _re = re2->copy();
+        *_re -= *im2;
+        _im = reim->copy();
+        *_im += *imre;
+        delete re2; delete im2; delete reim; delete imre;
 	return *this;
 }
 
